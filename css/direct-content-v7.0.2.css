@@ -1,0 +1,5 @@
+/* Seeker Of SoundZ v7.0.2 - direct-to-content layout
+   Removes the need for oversized descriptive page heroes while preserving each page's actual tools/content. */
+main.directContentMain{padding-top:clamp(88px,8vw,118px)}
+main.directContentMain>.section:first-child{padding-top:clamp(24px,4vw,52px)}
+@media(max-width:760px){main.directContentMain{padding-top:78px}main.directContentMain>.section:first-child{padding-top:20px}}

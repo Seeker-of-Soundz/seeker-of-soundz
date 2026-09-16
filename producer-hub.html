@@ -1,552 +1,538 @@
 <!DOCTYPE html>
+
 <html lang="en">
- <head>
+<head>
 <meta charset="utf-8"/>
-  <meta content="width=device-width,initial-scale=1" name="viewport"/>
-  <title>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<title>
    Producer Hub | Seeker Of SoundZ
   </title>
-  <link href="css/variables.css" rel="stylesheet"/>
-  <link href="css/reset.css" rel="stylesheet"/>
-  <link href="css/layout.css" rel="stylesheet"/>
-  <link href="css/navigation.css" rel="stylesheet"/>
-  <link href="css/hero.css?v=4.7.3" rel="stylesheet"/>
-  <link href="css/pages.css" rel="stylesheet"/>
-  <link href="css/buttons.css" rel="stylesheet"/>
-  <link href="css/loader.css" rel="stylesheet"/>
+<link href="css/variables.css" rel="stylesheet"/>
+<link href="css/reset.css" rel="stylesheet"/>
+<link href="css/layout.css" rel="stylesheet"/>
+<link href="css/navigation.css" rel="stylesheet"/>
+<link href="css/hero.css?v=4.7.3" rel="stylesheet"/>
+<link href="css/pages.css" rel="stylesheet"/>
+<link href="css/buttons.css" rel="stylesheet"/>
+<link href="css/loader.css" rel="stylesheet"/>
 <link href="css/cursor.css?v=4.7.3" rel="stylesheet"/>
-  <link href="css/animations.css" rel="stylesheet"/>
-  <link href="css/responsive.css" rel="stylesheet"/>
-  <link href="css/app-shell.css" rel="stylesheet"/>
-  <link href="css/upgrade-v2.4.css" rel="stylesheet"/>
-  <link href="css/upgrade-v2.16.css" rel="stylesheet"/>
-  <link href="css/upgrade-v3.0.css" rel="stylesheet"/>
-   <link href="css/upgrade-v3.3.css" rel="stylesheet"/>
-   <link href="css/upgrade-v3.6.css" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/upgrade-v4.5.css">
-  <link rel="stylesheet" href="css/upgrade-v4.6.3.css?v=4.6.3">
-  <link rel="stylesheet" href="css/upgrade-v4.6.8.css?v=4.6.8">
-  <link rel="stylesheet" href="css/upgrade-v4.7.9.css?v=4.7.9">
-  <link rel="stylesheet" href="css/upgrade-v4.7.11.css?v=4.7.11">
-  <link rel="stylesheet" href="css/upgrade-v4.8.css?v=4.8.1">
-  <link rel="stylesheet" href="css/starfield-v4.8.7.css?v=4.8.7">
-   <link rel="stylesheet" href="css/frequency-interface-v4.9.css?v=4.9">
-   <link rel="stylesheet" href="css/frequency-navigation-v4.9.1.css?v=4.9.1">
-   <link rel="stylesheet" href="css/frequency-polish-v4.9.2.css?v=4.9.3">
-   <link rel="stylesheet" href="css/upgrade-v4.9.5.css?v=4.9.5">
-   <link rel="stylesheet" href="css/upgrade-v4.9.8.css?v=4.9.8">
-   <link rel="stylesheet" href="css/upgrade-v4.10.css?v=4.10.3">
-   <link rel="stylesheet" href="css/upgrade-v4.10.4.css?v=4.10.4">
-  <link rel="stylesheet" href="css/upgrade-v4.10.5.css?v=4.10.5">
-   <link rel="stylesheet" href="css/upgrade-v4.10.10.css?v=4.10.10">
-   <link rel="stylesheet" href="css/upgrade-v4.10.17.css?v=4.10.18">
-   <link rel="stylesheet" href="css/mobile-layout-fix-v4.12.2.css?v=4.12.2">
-   <link rel="stylesheet" href="css/mobile-layout-fix-v4.12.3.css?v=4.12.3">
-   <link rel="stylesheet" href="css/mobile-navigation-fix-v4.12.4.css?v=4.12.4">
-  <link rel="stylesheet" href="css/transition-controller-v4.13.5.css?v=4.13.5">
-  <link rel="stylesheet" href="css/v4.13.16-stability.css?v=4.13.16">
-  <link rel="stylesheet" href="css/v4.13.18-account-ranks-profiles.css?v=4.13.18">
-  <link rel="stylesheet" href="css/v4.13.25-notifications-presence.css?v=4.13.25">
-  <link rel="stylesheet" href="css/v4.13.26-forum-presence-notifications.css?v=4.13.26">
-  <link rel="stylesheet" href="css/v4.13.27-forum-mentions-privacy.css?v=4.13.27">
-  <link rel="stylesheet" href="css/v4.13.28-final-forum-nav-fixes.css?v=4.13.28">
-  <link rel="stylesheet" href="css/v4.13.29-account-profile-presence.css?v=4.13.29">
-  <link rel="stylesheet" href="css/v4.13.32-achievement-cursor-toast-fixes.css?v=4.13.32">
-  <link rel="stylesheet" href="css/v4.13.33-restored-achievements.css?v=4.13.33">
-  <link rel="stylesheet" href="css/v4.13.43-cart-quests-toast-fix.css?v=4.13.43">
-<link rel="stylesheet" href="css/v4.13.44-nav-layer-fixes.css?v=4.13.44">
-  <link rel="stylesheet" href="css/v4.14.0-quest-events-studio.css?v=4.14.0">
-  <link rel="stylesheet" href="css/v4.15.0-performance-stability.css?v=4.15.0">
-  <link rel="stylesheet" href="css/v4.15.1-quest-event-dropzone.css?v=4.15.1">
-  <link rel="stylesheet" href="css/v4.15.3-sounds-toast-integrity.css?v=4.15.3">
-  <link rel="stylesheet" href="css/v4.15.4-loader-notifications-music.css?v=4.15.4">
-  <link rel="stylesheet" href="css/v4.16.0-homepage-content-studio.css?v=4.16.0">
-  <link rel="stylesheet" href="css/v4.16.1-homepage-gallery-music-status.css?v=4.16.1">
-  <link rel="stylesheet" href="css/v4.16.2-featured-loader-customizer.css?v=4.16.2">
-  <script src="js/loader-preferences-early-v4.19.8.js?v=4.19.8"></script>
-  <link rel="stylesheet" href="css/v4.17.0-professional-studio.css?v=4.17.0">
-  <link rel="stylesheet" href="css/v4.17.1-producer-video-gallery.css?v=4.17.1">
-  <link rel="stylesheet" href="css/v4.17.2-expanded-video-fx-producer.css?v=4.17.2">
-  <link rel="stylesheet" href="css/v4.17.3-youtube-compatibility.css?v=4.17.3">
-  <link rel="stylesheet" href="css/v4.17.4-youtube-synced-fx.css?v=4.17.4">
-  <link rel="stylesheet" href="css/v4.17.5-youtube-project-waveform.css?v=4.17.5">
-  <link rel="stylesheet" href="css/v4.17.6-video-fx-runtime-fix.css?v=4.17.6">
-  <link rel="stylesheet" href="css/v4.17.7-media-converter-sticky-preview.css?v=4.17.7">
-  <link rel="stylesheet" href="css/v4.17.8-tab-capture-converter.css?v=4.17.8">
-  <link rel="stylesheet" href="css/v4.17.9-youtube-autocapture-projects.css?v=4.17.9">
-  <link rel="stylesheet" href="css/v4.17.10-youtube-capture-selection-theme.css?v=4.17.10">
-  <link rel="stylesheet" href="css/v4.17.11-final-video-compact-capture.css?v=4.17.11">
-  <link rel="stylesheet" href="css/v4.17.12-licensed-library-module-containment.css?v=4.17.12">
-  <link rel="stylesheet" href="css/v4.17.13-retro-presets-cc-cinema.css?v=4.17.13">
-  <link rel="stylesheet" href="css/v4.18.0-modular-video-studio.css?v=4.18.0">
-  <link rel="stylesheet" href="css/v4.18.1-tutorial-cursor-epic-polish.css?v=4.18.1">
-  <link rel="stylesheet" href="css/v4.18.2-single-preview-provider-manager.css?v=4.18.2">
-  <link rel="stylesheet" href="css/v4.18.3-video-download-provider.css?v=4.18.3">
-  <link rel="stylesheet" href="css/v4.19.0-producer-hub-2.css?v=4.19.0">
-  <link rel="stylesheet" href="css/v4.19.1-major-fixes.css?v=4.19.1">
-  <link rel="stylesheet" href="css/v4.19.2-owner-members-loader-nav-fixes.css?v=4.19.2">
-  <link rel="stylesheet" href="css/v4.19.4-profile-settings-toast-loader-nav-polish.css?v=4.19.4">
-  <link rel="stylesheet" href="css/v4.19.5-profile-modules-clean-loader.css?v=4.19.5">
-  <link rel="stylesheet" href="css/v4.19.6-toasts-loader-fx-collaboration.css?v=4.19.6">
-  <link rel="stylesheet" href="css/v4.19.7-toasts-collaboration-sounds-socials.css?v=4.19.7">
-  <link rel="stylesheet" href="css/v4.19.8-default-loader-admin-overview-theme.css?v=4.19.8">
-</head>
- <body>
-  <div id="loader">
-   <div class="loaderBackgroundGlow">
-   </div>
-   <div class="loaderScan">
-   </div>
-   <div aria-hidden="true" class="loaderCustomSwipeV4195"></div>
-   <div class="loaderParticles">
-    <span>
-    </span>
-    <span>
-    </span>
-    <span>
-    </span>
-    <span>
-    </span>
-    <span>
-    </span>
-    <span>
-    </span>
-    <span>
-    </span>
-    <span>
-    </span>
-   </div>
-   <div class="loaderContent">
-    <div class="loaderLogoStage">
-     <div class="loaderOrbit loaderOrbitOuter">
-     </div>
-     <div class="loaderOrbit loaderOrbitInner">
-     </div>
-     <div class="loaderLogoGlow">
-     </div>
-     <div aria-hidden="true" class="loaderCenterEffectV4196">
-      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-     </div>
-     <img alt="Seeker Of SoundZ" class="loaderLogoImage" src="assets/images/sos-logo.png"/>
-    </div>
-    <h1 class="loaderBrandName">
+<link href="css/animations.css" rel="stylesheet"/>
+<link href="css/responsive.css" rel="stylesheet"/>
+<link href="css/app-shell.css" rel="stylesheet"/>
+<link href="css/upgrade-v2.4.css" rel="stylesheet"/>
+<link href="css/upgrade-v2.16.css" rel="stylesheet"/>
+<link href="css/upgrade-v3.0.css" rel="stylesheet"/>
+<link href="css/upgrade-v3.3.css" rel="stylesheet"/>
+<link href="css/upgrade-v3.6.css" rel="stylesheet"/>
+<link href="css/upgrade-v4.5.css" rel="stylesheet"/>
+<link href="css/upgrade-v4.6.3.css?v=4.6.3" rel="stylesheet"/>
+<link href="css/upgrade-v4.6.8.css?v=4.6.8" rel="stylesheet"/>
+<link href="css/upgrade-v4.7.9.css?v=4.7.9" rel="stylesheet"/>
+<link href="css/upgrade-v4.7.11.css?v=4.7.11" rel="stylesheet"/>
+<link href="css/upgrade-v4.8.css?v=4.8.1" rel="stylesheet"/>
+<link href="css/starfield-v4.8.7.css?v=4.8.7" rel="stylesheet"/>
+<link href="css/frequency-interface-v4.9.css?v=4.9" rel="stylesheet"/>
+<link href="css/frequency-navigation-v4.9.1.css?v=4.9.1" rel="stylesheet"/>
+<link href="css/frequency-polish-v4.9.2.css?v=4.9.3" rel="stylesheet"/>
+<link href="css/upgrade-v4.9.5.css?v=4.9.5" rel="stylesheet"/>
+<link href="css/upgrade-v4.9.8.css?v=4.9.8" rel="stylesheet"/>
+<link href="css/upgrade-v4.10.css?v=4.10.3" rel="stylesheet"/>
+<link href="css/upgrade-v4.10.4.css?v=4.10.4" rel="stylesheet"/>
+<link href="css/upgrade-v4.10.5.css?v=4.10.5" rel="stylesheet"/>
+<link href="css/upgrade-v4.10.10.css?v=4.10.10" rel="stylesheet"/>
+<link href="css/upgrade-v4.10.17.css?v=4.10.18" rel="stylesheet"/>
+<link href="css/mobile-layout-fix-v4.12.2.css?v=4.12.2" rel="stylesheet"/>
+<link href="css/mobile-layout-fix-v4.12.3.css?v=4.12.3" rel="stylesheet"/>
+<link href="css/mobile-navigation-fix-v4.12.4.css?v=4.12.4" rel="stylesheet"/>
+<link href="css/transition-controller-v4.13.5.css?v=4.13.5" rel="stylesheet"/>
+<link href="css/v4.13.16-stability.css?v=4.13.16" rel="stylesheet"/>
+<link href="css/v4.13.18-account-ranks-profiles.css?v=4.13.18" rel="stylesheet"/>
+<link href="css/v4.13.25-notifications-presence.css?v=4.13.25" rel="stylesheet"/>
+<link href="css/v4.13.26-forum-presence-notifications.css?v=4.13.26" rel="stylesheet"/>
+<link href="css/v4.13.27-forum-mentions-privacy.css?v=4.13.27" rel="stylesheet"/>
+<link href="css/v4.13.28-final-forum-nav-fixes.css?v=4.13.28" rel="stylesheet"/>
+<link href="css/v4.13.29-account-profile-presence.css?v=4.13.29" rel="stylesheet"/>
+<link href="css/v4.13.32-achievement-cursor-toast-fixes.css?v=4.13.32" rel="stylesheet"/>
+<link href="css/v4.13.33-restored-achievements.css?v=4.13.33" rel="stylesheet"/>
+<link href="css/v4.13.43-cart-quests-toast-fix.css?v=4.13.43" rel="stylesheet"/>
+<link href="css/v4.13.44-nav-layer-fixes.css?v=4.13.44" rel="stylesheet"/>
+<link href="css/v4.14.0-quest-events-studio.css?v=4.14.0" rel="stylesheet"/>
+<link href="css/v4.15.0-performance-stability.css?v=4.15.0" rel="stylesheet"/>
+<link href="css/v4.15.1-quest-event-dropzone.css?v=4.15.1" rel="stylesheet"/>
+<link href="css/v4.15.3-sounds-toast-integrity.css?v=4.15.3" rel="stylesheet"/>
+<link href="css/v4.15.4-loader-notifications-music.css?v=4.15.4" rel="stylesheet"/>
+<link href="css/v4.16.0-homepage-content-studio.css?v=4.16.0" rel="stylesheet"/>
+<link href="css/v4.16.1-homepage-gallery-music-status.css?v=4.16.1" rel="stylesheet"/>
+<link href="css/v4.16.2-featured-loader-customizer.css?v=4.16.2" rel="stylesheet"/>
+<script src="js/loader-preferences-early-v4.19.8.js?v=4.19.8"></script>
+<link href="css/v4.17.0-professional-studio.css?v=4.17.0" rel="stylesheet"/>
+<link href="css/v4.17.1-producer-video-gallery.css?v=4.17.1" rel="stylesheet"/>
+<link href="css/v4.17.2-expanded-video-fx-producer.css?v=4.17.2" rel="stylesheet"/>
+<link href="css/v4.17.3-youtube-compatibility.css?v=4.17.3" rel="stylesheet"/>
+<link href="css/v4.17.4-youtube-synced-fx.css?v=4.17.4" rel="stylesheet"/>
+<link href="css/v4.17.5-youtube-project-waveform.css?v=4.17.5" rel="stylesheet"/>
+<link href="css/v4.17.6-video-fx-runtime-fix.css?v=4.17.6" rel="stylesheet"/>
+<link href="css/v4.17.7-media-converter-sticky-preview.css?v=4.17.7" rel="stylesheet"/>
+<link href="css/v4.17.8-tab-capture-converter.css?v=4.17.8" rel="stylesheet"/>
+<link href="css/v4.17.9-youtube-autocapture-projects.css?v=4.17.9" rel="stylesheet"/>
+<link href="css/v4.17.10-youtube-capture-selection-theme.css?v=4.17.10" rel="stylesheet"/>
+<link href="css/v4.17.11-final-video-compact-capture.css?v=4.17.11" rel="stylesheet"/>
+<link href="css/v4.17.12-licensed-library-module-containment.css?v=4.17.12" rel="stylesheet"/>
+<link href="css/v4.17.13-retro-presets-cc-cinema.css?v=4.17.13" rel="stylesheet"/>
+<link href="css/v4.18.0-modular-video-studio.css?v=4.18.0" rel="stylesheet"/>
+<link href="css/v4.18.1-tutorial-cursor-epic-polish.css?v=4.18.1" rel="stylesheet"/>
+<link href="css/v4.18.2-single-preview-provider-manager.css?v=4.18.2" rel="stylesheet"/>
+<link href="css/v4.18.3-video-download-provider.css?v=4.18.3" rel="stylesheet"/>
+<link href="css/v4.19.0-producer-hub-2.css?v=4.19.0" rel="stylesheet"/>
+<link href="css/v4.19.1-major-fixes.css?v=4.19.1" rel="stylesheet"/>
+<link href="css/v4.19.2-owner-members-loader-nav-fixes.css?v=4.19.2" rel="stylesheet"/>
+<link href="css/v4.19.4-profile-settings-toast-loader-nav-polish.css?v=4.19.4" rel="stylesheet"/>
+<link href="css/v4.19.5-profile-modules-clean-loader.css?v=4.19.5" rel="stylesheet"/>
+<link href="css/v4.19.6-toasts-loader-fx-collaboration.css?v=4.19.6" rel="stylesheet"/>
+<link href="css/v4.19.7-toasts-collaboration-sounds-socials.css?v=4.19.7" rel="stylesheet"/>
+<link href="css/v4.19.8-default-loader-admin-overview-theme.css?v=4.19.8" rel="stylesheet"/>
+<link href="css/direct-content-v7.0.2.css?v=7.0.2" rel="stylesheet"/></head>
+<body>
+<div id="loader">
+<div class="loaderBackgroundGlow">
+</div>
+<div class="loaderScan">
+</div>
+<div aria-hidden="true" class="loaderCustomSwipeV4195"></div>
+<div class="loaderParticles">
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+<span>
+</span>
+</div>
+<div class="loaderContent">
+<div class="loaderLogoStage">
+<div class="loaderOrbit loaderOrbitOuter">
+</div>
+<div class="loaderOrbit loaderOrbitInner">
+</div>
+<div class="loaderLogoGlow">
+</div>
+<div aria-hidden="true" class="loaderCenterEffectV4196">
+<span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+</div>
+<img alt="Seeker Of SoundZ" class="loaderLogoImage" src="assets/images/sos-logo.png"/>
+</div>
+<h1 class="loaderBrandName">
      Seeker Of SoundZ
     </h1>
-    <p class="loaderSubtitle">
+<p class="loaderSubtitle">
      DJ • PRODUCER • CREATOR
     </p>
-    <div class="loaderStatus">
-     <span>
+<div class="loaderStatus">
+<span>
       Loading Producer Hub
      </span>
-     <span class="loaderPercent">
+<span class="loaderPercent">
       0%
      </span>
-    </div>
-    <div class="loaderBar">
-     <div class="loaderProgress">
-     </div>
-     <div class="loaderBarGlow">
-     </div>
-    </div>
-   </div>
-  </div>
-  <div id="cursor">
-   <div id="cursorDot">
-   </div>
-   <div id="cursorRing">
-   </div>
-  </div>
+</div>
+<div class="loaderBar">
+<div class="loaderProgress">
+</div>
+<div class="loaderBarGlow">
+</div>
+</div>
+</div>
+</div>
+<div id="cursor">
+<div id="cursorDot">
+</div>
+<div id="cursorRing">
+</div>
+</div>
 <div id="sharedNavigation">
-  </div>
-  <main>
-   <section class="pageHero">
-    <div class="container">
-     <div class="pageHeroContent">
-      <p class="sectionEyebrow">
-       FL Studio Producer Directory
-      </p>
-      <h1>
-       Find the next sound in your frequency.
-      </h1>
-      <p>
-       Search more than 200 plugins, FL Studio tools, DJ software, hardware, samples, presets, and production marketplaces, then continue to the official creator or store page.
-      </p>
-     </div>
-    </div>
-   </section>
-   <section class="section premiumStudioPromoV4171"><div class="container"><div class="featuredEvent"><div class="featuredEventContent"><p class="sectionEyebrow">Premium Members</p><h2>Video Effects Studio</h2><p>Generate waveforms, trim music videos, add beat-reactive effects, and render a downloadable video directly in your browser.</p><a class="primaryButton" href="video-effects-studio.html">Open Video Studio</a></div></div></div></section><section class="section">
-    <div class="container">
-     <div class="producerHeroGrid">
-      <article class="producerHeroCard">
-       <p class="sectionEyebrow">
+</div>
+<main class="directContentMain">
+<section class="section premiumStudioPromoV4171"><div class="container"><div class="featuredEvent"><div class="featuredEventContent"><p class="sectionEyebrow">Premium Members</p><h2>Video Effects Studio</h2><p>Generate waveforms, trim music videos, add beat-reactive effects, and render a downloadable video directly in your browser.</p><a class="primaryButton" href="video-effects-studio.html">Open Video Studio</a></div></div></div></section><section class="section">
+<div class="container">
+<div class="producerHeroGrid">
+<article class="producerHeroCard">
+<p class="sectionEyebrow">
         Producer Resource Hub
        </p>
-       <h2>
+<h2>
         Plugins. Sounds. Inspiration.
        </h2>
-       <p>
+<p>
         This custom directory is designed for FL Studio producers. Browse a deeply expanded, software-divided directory of resources or let an administrator add direct product and purchase links without editing HTML.
        </p>
-       <div class="marketplaceLinks">
-        <a class="primaryButton" href="https://www.image-line.com/fl-studio/plugins" rel="noopener" target="_blank">
+<div class="marketplaceLinks">
+<a class="primaryButton" href="https://www.image-line.com/fl-studio/plugins" rel="noopener" target="_blank">
          Image-Line Plugins
         </a>
-        <a class="secondaryButton" href="https://splice.com/sounds" rel="noopener" target="_blank">
+<a class="secondaryButton" href="https://splice.com/sounds" rel="noopener" target="_blank">
          Splice Sounds
         </a>
-       </div>
-      </article>
-      <div class="producerStats">
-       <div class="producerStat">
-        <strong id="resourceTotal">
+</div>
+</article>
+<div class="producerStats">
+<div class="producerStat">
+<strong id="resourceTotal">
          0
         </strong>
-        <span>
+<span>
          DIRECTORY ITEMS
         </span>
-       </div>
-       <div class="producerStat">
-        <strong id="pluginTotal">
+</div>
+<div class="producerStat">
+<strong id="pluginTotal">
          0
         </strong>
-        <span>
+<span>
          PLUGINS
         </span>
-       </div>
-       <div class="producerStat">
-        <strong id="soundTotal">
+</div>
+<div class="producerStat">
+<strong id="soundTotal">
          0
         </strong>
-        <span>
+<span>
          SOUND SOURCES
         </span>
-       </div>
-       <div class="producerStat">
-        <strong id="djTotal">
+</div>
+<div class="producerStat">
+<strong id="djTotal">
          0
         </strong>
-        <span>
+<span>
          DJ RESOURCES
         </span>
-       </div>
-      </div>
-     </div>
-     <div class="producerNotice">
+</div>
+</div>
+</div>
+<div class="producerNotice">
       External purchase and download pages are operated by their respective companies. Compatibility, licenses, pricing, and availability should always be verified on the destination page.
      </div>
-     <div class="resourceToolbar">
-      <input id="resourceSearch" placeholder="Search synths, effects, drums, samples, presets..." type="search"/>
-      <select id="resourceType">
-       <option value="all">
+<div class="resourceToolbar">
+<input id="resourceSearch" placeholder="Search synths, effects, drums, samples, presets..." type="search"/>
+<select id="resourceType">
+<option value="all">
         All resource types
        </option>
-       <option>
+<option>
         Plugin
        </option>
-       <option>
+<option>
         Sounds
        </option>
-       <option>
+<option>
         Presets
        </option>
-       <option>
+<option>
         Marketplace
        </option>
-       <option>
+<option>
         Learning
        </option>
-       <option>
+<option>
         Beat Pattern
        </option>
-       <option>
+<option>
         Free Sample
        </option>
-      </select>
-      <select id="resourcePrice">
-       <option value="all">
+</select>
+<select id="resourcePrice">
+<option value="all">
         Free &amp; paid
        </option>
-       <option value="Free">
+<option value="Free">
         Free
        </option>
-       <option value="Paid">
+<option value="Paid">
         Paid
        </option>
-       <option value="Mixed">
+<option value="Mixed">
         Free + paid
        </option>
-      </select>
-      <select id="resourceEcosystem">
-       <option value="all">
+</select>
+<select id="resourceEcosystem">
+<option value="all">
         All software &amp; systems
        </option>
-       <option>
+<option>
         FL Studio Native
        </option>
-       <option>
+<option>
         FL Studio / VST3
        </option>
-       <option>
+<option>
         FL Studio / All DAWs
        </option>
-       <option>
+<option>
         Ableton Live
        </option>
-       <option>
+<option>
         Logic Pro / macOS
        </option>
-       <option>
+<option>
         Bitwig Studio
        </option>
-       <option>
+<option>
         Studio One
        </option>
-       <option>
+<option>
         Cubase / VST3
        </option>
-       <option>
+<option>
         Pro Tools / AAX
        </option>
-       <option>
+<option>
         DJ Performance
        </option>
-       <option>
+<option>
         DJ Hardware
        </option>
-       <option>
+<option>
         All DAWs
        </option>
-       <option>
+<option>
         All DAWs / DJ
        </option>
-      </select>
-     </div>
-     <div class="resourceCategoryStrip" id="resourceCategoryStrip">
-     </div>
-     <div class="resourceGrid" id="resourceGrid">
-     </div>
-     <div class="resourcePager">
-      <button class="secondaryButton" id="resourcePrev" type="button">
+</select>
+</div>
+<div class="resourceCategoryStrip" id="resourceCategoryStrip">
+</div>
+<div class="resourceGrid" id="resourceGrid">
+</div>
+<div class="resourcePager">
+<button class="secondaryButton" id="resourcePrev" type="button">
        ← Previous
       </button>
-      <span id="resourcePageInfo">
+<span id="resourcePageInfo">
        Page 1
       </span>
-      <button class="secondaryButton" id="resourceNext" type="button">
+<button class="secondaryButton" id="resourceNext" type="button">
        Next →
       </button>
-     </div>
-     <section class="producerAdmin" hidden="" id="producerAdmin">
-      <div class="producerAdminHead">
-       <div>
-        <p class="sectionEyebrow">
+</div>
+<section class="producerAdmin" hidden="" id="producerAdmin">
+<div class="producerAdminHead">
+<div>
+<p class="sectionEyebrow">
          Administrator Studio
         </p>
-        <h2>
+<h2>
          Manage producer resources
         </h2>
-       </div>
-       <button class="secondaryButton" id="resetResources" type="button">
+</div>
+<button class="secondaryButton" id="resetResources" type="button">
         Restore Examples
        </button>
-      </div>
-      <form id="resourceForm">
-       <input name="name" placeholder="Plugin, pack, or marketplace name" required=""/>
-       <input name="vendor" placeholder="Developer or vendor" required=""/>
-       <select name="type">
-        <option>
+</div>
+<form id="resourceForm">
+<input name="name" placeholder="Plugin, pack, or marketplace name" required=""/>
+<input name="vendor" placeholder="Developer or vendor" required=""/>
+<select name="type">
+<option>
          Plugin
         </option>
-        <option>
+<option>
          Sounds
         </option>
-        <option>
+<option>
          Presets
         </option>
-        <option>
+<option>
          Marketplace
         </option>
-        <option>
+<option>
          Learning
         </option>
-        <option>
+<option>
          Beat Pattern
         </option>
-        <option>
+<option>
          Free Sample
         </option>
-       </select>
-       <select name="price">
-        <option>
+</select>
+<select name="price">
+<option>
          Paid
         </option>
-        <option>
+<option>
          Free
         </option>
-        <option>
+<option>
          Mixed
         </option>
-       </select>
-       <select name="ecosystem">
-        <option>
+</select>
+<select name="ecosystem">
+<option>
          FL Studio Native
         </option>
-        <option>
+<option>
          FL Studio / VST3
         </option>
-        <option>
+<option>
          FL Studio / All DAWs
         </option>
-        <option>
+<option>
          Ableton Live
         </option>
-        <option>
+<option>
          Logic Pro / macOS
         </option>
-        <option>
+<option>
          DJ Performance
         </option>
-        <option>
+<option>
          DJ Hardware
         </option>
-        <option>
+<option>
          All DAWs
         </option>
-       </select>
-       <input name="category" placeholder="Category: Synth, Mixing, Drums..."/>
-       <input maxlength="4" name="icon" placeholder="Icon, e.g. 🎹"/>
-       <input class="full" name="url" placeholder="Official product or purchase URL" required="" type="url"/>
-       <input class="full" name="youtubeUrl" placeholder="Optional YouTube video URL for an embedded card preview" type="url"/>
-       <textarea class="full" name="description" placeholder="Description shown on the resource card" required=""></textarea>
-       <input name="tags" placeholder="Search tags, comma separated"/>
-       <button class="primaryButton" type="submit">
+</select>
+<input name="category" placeholder="Category: Synth, Mixing, Drums..."/>
+<input maxlength="4" name="icon" placeholder="Icon, e.g. 🎹"/>
+<input class="full" name="url" placeholder="Official product or purchase URL" required="" type="url"/>
+<input class="full" name="youtubeUrl" placeholder="Optional YouTube video URL for an embedded card preview" type="url"/>
+<textarea class="full" name="description" placeholder="Description shown on the resource card" required=""></textarea>
+<input name="tags" placeholder="Search tags, comma separated"/>
+<button class="primaryButton" type="submit">
         Publish Resource
        </button>
-      </form>
-      <div class="resourceAdminList" id="resourceAdminList">
-      </div>
-     </section>
-    </div>
-   </section>
-  </main>
-  <button aria-label="Scroll to top" id="scrollTopBtn" type="button">
+</form>
+<div class="resourceAdminList" id="resourceAdminList">
+</div>
+</section>
+</div>
+</section>
+</main>
+<button aria-label="Scroll to top" id="scrollTopBtn" type="button">
    ↑
   </button>
-  <footer id="siteFooter">
-   <div class="container">
-    <div class="footerTop">
-     <div class="footerBrand">
-      <a class="footerLogo" href="index.html">
+<footer id="siteFooter">
+<div class="container">
+<div class="footerTop">
+<div class="footerBrand">
+<a class="footerLogo" href="index.html">
        SEEKER OF SOUNDZ
       </a>
-      <p>
+<p>
        DJ • Producer • Creator
       </p>
-      <span>
+<span>
        Experience the frequency.
       </span>
-     </div>
-     <div class="footerNavigation">
-      <div class="footerColumn">
-       <h3>
+</div>
+<div class="footerNavigation">
+<div class="footerColumn">
+<h3>
         Explore
        </h3>
-       <a href="music.html">
+<a href="music.html">
         Music
        </a>
-       <a href="producer-hub.html">
+<a href="producer-hub.html">
         Producer Hub
        </a>
-       <a href="gallery.html">
+<a href="gallery.html">
         Gallery
        </a>
-       <a href="videos.html">
+<a href="videos.html">
         Videos
        </a>
-      </div>
-      <div class="footerColumn">
-       <h3>
+</div>
+<div class="footerColumn">
+<h3>
         Connect
        </h3>
-       <a href="forums.html">
+<a href="forums.html">
         Forums
        </a>
-       <a href="events.html">
+<a href="events.html">
         Events
        </a>
-       <a href="contact.html">
+<a href="contact.html">
         Contact
        </a>
-       <a href="members.html">
+<a href="members.html">
         Members
        </a>
-      </div>
-     </div>
-    </div>
-    <div class="footerDivider">
-    </div>
-    <div class="footerBottom">
-     <p>
+</div>
+</div>
+</div>
+<div class="footerDivider">
+</div>
+<div class="footerBottom">
+<p>
       ©
       <span id="footerYear">
        2026
       </span>
       Seeker Of SoundZ. All rights reserved.
      </p>
-     <div class="footerBottomLinks">
-      <a href="contact.html">
+<div class="footerBottomLinks">
+<a href="contact.html">
        Contact
       </a>
-      <a href="admin.html">
+<a href="admin.html">
        Admin
       </a>
-     </div>
-    </div>
-   </div>
-  </footer>
-  <script src="js/performance-v4.6.8.js?v=4.13.39"></script>
-  <script src="js/image-tools.js">
-  </script>
-  <script src="js/backend-config.js">
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase/supabase-client.js?v=4.11.0"></script>
-  <script src="js/supabase/supabase-services.js?v=4.12.0"></script>
-  <script src="js/supabase/auth-bridge.js?v=4.12.0"></script>
-  <script src="js/app.js">
-  </script>
-  <script src="js/shared-navigation.js">
-  </script>
-  <script src="js/navigation.js">
-  </script>
-  <script src="js/loader.js?v=4.13.32">
-  </script>
-  <script src="js/cursor.js?v=4.13.32">
-  </script>
-  <script src="js/scroll.js">
-  </script>
-  <script src="js/app-shell.js?v=4.17.1">
-  </script>
-  <script src="js/profile-sounds-v4.19.7.js?v=4.19.7"></script>
-  <script src="js/achievement-sound-v4.13.31.js?v=4.15.3"></script>
-  <script src="js/notification-center-v4.13.25.js?v=4.15.4"></script>
-  <script src="js/site-v3.6.js"></script>
-  <script src="js/producer-hub.js?v=4.17.3">
-  </script>
-  <script src="js/production-v4.5.js?v=4.13.34"></script>
-    <script src="js/adaptive-performance-v4.15.0.js?v=4.15.0"></script>
+</div>
+</div>
+</div>
+</footer>
+<script src="js/performance-v4.6.8.js?v=4.13.39"></script>
+<script src="js/image-tools.js">
+</script>
+<script src="js/backend-config.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase/supabase-client.js?v=4.11.0"></script>
+<script src="js/supabase/supabase-services.js?v=4.12.0"></script>
+<script src="js/supabase/auth-bridge.js?v=4.12.0"></script>
+<script src="js/app.js">
+</script>
+<script src="js/shared-navigation.js">
+</script>
+<script src="js/navigation.js">
+</script>
+<script src="js/loader.js?v=4.13.32">
+</script>
+<script src="js/cursor.js?v=4.13.32">
+</script>
+<script src="js/scroll.js">
+</script>
+<script src="js/app-shell.js?v=4.17.1">
+</script>
+<script src="js/profile-sounds-v4.19.7.js?v=4.19.7"></script>
+<script src="js/achievement-sound-v4.13.31.js?v=4.15.3"></script>
+<script src="js/notification-center-v4.13.25.js?v=4.15.4"></script>
+<script src="js/site-v3.6.js"></script>
+<script src="js/producer-hub.js?v=4.17.3">
+</script>
+<script src="js/production-v4.5.js?v=4.13.34"></script>
+<script src="js/adaptive-performance-v4.15.0.js?v=4.15.0"></script>
 <script src="js/starfield-v4.8.7.js?v=4.15.0"></script>
-   <script src="js/frequency-interface-v4.9.js?v=4.9"></script>
-   <script src="js/frequency-navigation-v4.9.1.js?v=4.13.33"></script>
-   <script src="js/frequency-polish-v4.9.2.js?v=4.9.3"></script>
-   <script src="js/experience-v4.19.8.js?v=4.19.8"></script>
-  <script src="js/global-search-v4.10.js?v=4.10"></script>
-   <script src="js/member-visibility-v4.10.19.js?v=4.13.33"></script>
-   <script src="js/transition-controller-v4.13.5.js?v=4.13.5"></script>
-  <script src="js/legacy-achievement-catalog-v4.13.33.js?v=4.13.33"></script>
-  <script src="js/legacy-achievement-sync-v4.13.33.js?v=4.13.33"></script>
-  <script src="js/navigation-integrity-v4.15.3.js?v=4.15.3"></script>
-  <script src="js/loader-transition-integrity-v4.15.4.js?v=4.15.4"></script>
+<script src="js/frequency-interface-v4.9.js?v=4.9"></script>
+<script src="js/frequency-navigation-v4.9.1.js?v=4.13.33"></script>
+<script src="js/frequency-polish-v4.9.2.js?v=4.9.3"></script>
+<script src="js/experience-v4.19.8.js?v=4.19.8"></script>
+<script src="js/global-search-v4.10.js?v=4.10"></script>
+<script src="js/member-visibility-v4.10.19.js?v=4.13.33"></script>
+<script src="js/transition-controller-v4.13.5.js?v=4.13.5"></script>
+<script src="js/legacy-achievement-catalog-v4.13.33.js?v=4.13.33"></script>
+<script src="js/legacy-achievement-sync-v4.13.33.js?v=4.13.33"></script>
+<script src="js/navigation-integrity-v4.15.3.js?v=4.15.3"></script>
+<script src="js/loader-transition-integrity-v4.15.4.js?v=4.15.4"></script>
 </body>
 </html>

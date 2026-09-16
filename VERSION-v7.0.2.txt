@@ -1,0 +1,21 @@
+Seeker Of SoundZ v7.0.2
+
+Combined build based on the uploaded v7.0.1 website.
+
+Layout update:
+- Removed oversized descriptive page hero sections from interior pages.
+- Pages now open directly into their primary content/tools.
+- Collaboration Studio opens directly at the access gate/workspace instead of requiring a scroll past its description.
+- Gallery retains the newer v7 gallery system, filters, assets, lightbox behavior, and later website integrations.
+- Homepage/index was intentionally left unchanged.
+
+Preserved from v7.0.1:
+- Producer Hub 7.0 systems
+- Gallery and media systems
+- Music/DJ visualizer and beat-synced strobe
+- Member visibility/preferences
+- Supabase/auth systems
+- Forums, collaboration, admin, merch, events, videos and profile systems
+- Current navigation, loaders, transitions, starfield and performance systems
+
+No Supabase update required.
