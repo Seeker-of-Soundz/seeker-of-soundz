@@ -1,0 +1,6 @@
+SEEKER OF SOUNDZ v7.0.3 — SPHERE FEZ HEADING FONT
+
+- Added the supplied Sphere Fez font as a local website asset.
+- Applied Sphere Fez to headings/title surfaces across every HTML page.
+- Body copy, buttons, forms, navigation behavior, scripts, loaders, particles, forums, music, gallery, collaboration, admin, and other existing functionality were left intact.
+- Added as a final typography override stylesheet to minimize conflicts with the existing CSS stack.

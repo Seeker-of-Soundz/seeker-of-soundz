@@ -1,0 +1,21 @@
+/* Seeker Of SoundZ v7.0.3 — Sphere Fez heading typography
+   Uses the user-supplied Sphere Fez font locally; body/UI copy remains unchanged. */
+@font-face {
+  font-family: "Sphere Fez";
+  src: url("../assets/fonts/Sphere-Fez.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root { --font-heading: "Sphere Fez", "Arial Narrow", "Rajdhani", "Segoe UI", sans-serif; }
+
+/* Heading/title surfaces only — intentionally excludes buttons, body text and form controls. */
+:is(h1,h2,h3,h4,h5,h6,
+  .section-title,.sectionTitle,.page-title,.pageTitle,.hero-title,.heroTitle,
+  .card-title,.cardTitle,.panel-title,.panelTitle,.modal-title,.modalTitle,
+  .dashboard-title,.dashboardTitle,.profile-title,.profileTitle,
+  .loaderBrandName,.heroLogoText,
+  [class*="Heading"],[class*="heading"],[class*="Title"],[class*="title"]):not(button):not(input):not(textarea):not(select) {
+  font-family: var(--font-heading) !important;
+}
