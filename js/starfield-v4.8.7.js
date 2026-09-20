@@ -23,6 +23,7 @@
     const mobileQuery = matchMedia('(max-width: 760px)');
     const reducedQuery = matchMedia('(prefers-reduced-motion: reduce)');
     const collaborationPage = document.body.classList.contains('collaborationPage');
+    const homePage = /(^|\/)index\.html$/i.test(location.pathname) || /\/$/.test(location.pathname);
 
     let width = 1;
     let height = 1;
@@ -52,7 +53,7 @@
     function starCount() {
       const mode=window.SOSExperience?.get?.().starfield||"balanced";
       if(mode==="off")return 0;
-      let count = mobileQuery.matches ? 105 : 175;
+      let count = mobileQuery.matches ? (homePage ? 72 : 105) : (homePage ? 128 : 175);
       if(mode==="subtle")count=Math.round(count*.5);
       if(mode==="crazy")count=Math.round(count*1.7);
       if (collaborationPage) count = Math.round(count * 0.68);
@@ -93,21 +94,21 @@
       }
 
       rebuildStars();
-      nextShootingStar = performance.now() + randomBetween(6500, 11500);
+      nextShootingStar = performance.now() + (homePage ? randomBetween(10500, 16500) : randomBetween(6500, 11500));
       draw(performance.now());
     }
 
     function resize() {
       width = Math.max(1, window.innerWidth);
       height = Math.max(1, window.innerHeight);
-      dpr = Math.min(window.devicePixelRatio || 1, mobileQuery.matches ? 1 : 1.25);
+      dpr = Math.min(window.devicePixelRatio || 1, homePage ? 1 : (mobileQuery.matches ? 1 : 1.25));
       canvas.width = Math.round(width * dpr);
       canvas.height = Math.round(height * dpr);
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       rebuildStars();
-      nextShootingStar = performance.now() + randomBetween(6500, 11500);
+      nextShootingStar = performance.now() + (homePage ? randomBetween(10500, 16500) : randomBetween(6500, 11500));
       draw(performance.now());
     }
 

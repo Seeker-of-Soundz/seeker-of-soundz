@@ -83,3 +83,23 @@
     letter-spacing: .035em !important;
   }
 }
+
+
+/* v7.0.5 — loader brand correction.
+   Loader profile font classes use !important, so this final selector deliberately
+   outranks those legacy presets for the real loading-screen brand only. */
+html body #loader .loaderBrandName {
+  font-family: "Sphere Fez", "Arial Narrow", "Rajdhani", "Segoe UI", sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  font-synthesis: none !important;
+}
+
+/* Keep the profile loader preview truthful to the real loader. */
+html body .loaderProfilePreviewV4162 .loaderPreviewBrandV4162 {
+  font-family: "Sphere Fez", "Arial Narrow", "Rajdhani", "Segoe UI", sans-serif !important;
+  font-weight: 400 !important;
+  letter-spacing: .12em !important;
+  font-synthesis: none !important;
+}

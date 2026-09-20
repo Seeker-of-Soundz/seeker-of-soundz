@@ -1,0 +1,9 @@
+Seeker Of SoundZ v7.0.5
+
+- Corrected the real loading-screen Seeker Of SoundZ brand to use the bundled Sphere Fez font.
+- Corrected the member loader preview brand so it matches the real loader.
+- Reduced homepage starfield workload only: fewer particles at the same visual presets and DPR capped at 1 on index.
+- Kept Off/Subtle/Balanced/Crazy starfield profile choices functional and proportional.
+- Reduced continuous homepage hero animation/filter workload without removing the visual identity.
+- Existing Performance Mode and adaptive low-FPS behavior remain authoritative.
+- No forum, music, collaboration, admin, profile, auth, loader logic, transition, or backend systems were rewritten.

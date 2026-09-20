@@ -1,0 +1,19 @@
+/* Seeker Of SoundZ v7.0.5 — index-only animation budget
+   Keeps the visual identity and member Experience Studio choices intact while
+   reducing continuous paint/filter work on the homepage. */
+body #hero::before { animation-duration: 10s !important; filter: blur(1.5px); }
+body #hero .heroContent h2::after { animation-duration: 8s !important; }
+body .frequencyLineCanvas,
+body [data-frequency-line] { will-change: auto !important; }
+
+/* Expensive glows stay visible, but avoid stacking large animated filters. */
+body #hero .heroLogoText { filter: none !important; }
+
+/* Adaptive low mode remains authoritative and can simplify further automatically. */
+html.sos-adaptive-low body #hero::before,
+html.performance-mode body #hero::before { animation: none !important; }
+
+@media (max-width:760px), (prefers-reduced-motion:reduce) {
+  body #hero::before,
+  body #hero .heroContent h2::after { animation: none !important; }
+}
