@@ -1,0 +1,37 @@
+/* Seeker Of SoundZ v7.0.6 — definitive Sphere Fez loader brand override.
+   Kept separate and loaded last so legacy/member loader font presets cannot replace it. */
+@font-face {
+  font-family: "SOS Sphere Fez Loader";
+  src: url("../assets/fonts/Sphere-Fez.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+html body #loader h1.loaderBrandName,
+html body #loader .loaderBrandName,
+html[class*="sos-loader-font-"] body #loader h1.loaderBrandName,
+html[class*="sos-loader-font-"] body #loader .loaderBrandName {
+  font-family: "SOS Sphere Fez Loader", "SPHERE FEZ", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-synthesis: none !important;
+  font-size: clamp(1.85rem, 4.4vw, 3rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: .075em !important;
+  text-transform: uppercase !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  text-shadow: 0 0 10px rgba(255,255,255,.12), 0 0 26px rgba(171,102,255,.28) !important;
+}
+
+/* Keep the member Experience Studio loader preview identical to the real loader. */
+html body .loaderProfilePreviewV4162 .loaderPreviewBrandV4162,
+html body .loaderPreviewBrandV4162 {
+  font-family: "SOS Sphere Fez Loader", "SPHERE FEZ", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  font-synthesis: none !important;
+  letter-spacing: .075em !important;
+  text-transform: uppercase !important;
+}
