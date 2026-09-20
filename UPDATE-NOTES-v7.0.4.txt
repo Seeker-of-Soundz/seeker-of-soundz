@@ -1,0 +1,5 @@
+Seeker Of SoundZ v7.0.4
+- Sphere Fez applied to main loader typography
+- Small eyebrow/header labels enlarged for readability
+- Index Seeker Of SoundZ brand resized to remain on one line with subtle glow
+- Existing site functionality preserved
