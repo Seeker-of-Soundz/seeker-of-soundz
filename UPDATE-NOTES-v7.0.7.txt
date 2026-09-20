@@ -1,0 +1,7 @@
+Seeker Of SoundZ v7.0.7 — Sphere Fez Footer Typography
+
+- Updated the existing site footer typography to use the bundled Sphere Fez font.
+- Applies to the Seeker Of SoundZ footer brand, DJ / Producer / Creator line, Experience the frequency tagline, footer section headings, navigation links, copyright line, and footer utility links.
+- Removed artificial heavy bolding from the footer brand so Sphere Fez renders in its intended shape.
+- Added only a restrained glow to the footer brand and hover links.
+- No footer HTML structure, navigation targets, JavaScript, member settings, loader, starfield, or page functionality was changed.

@@ -1,0 +1,45 @@
+/* Seeker Of SoundZ v7.0.7 — footer typography only.
+   Keeps footer layout/behavior intact while matching the site's Sphere Fez identity. */
+@font-face {
+  font-family: "SOS Sphere Fez Footer";
+  src: url("../assets/fonts/Sphere-Fez.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+#siteFooter .footerLogo,
+#siteFooter .footerBrand p,
+#siteFooter .footerBrand span,
+#siteFooter .footerColumn h3,
+#siteFooter .footerColumn a,
+#siteFooter .footerBottom p,
+#siteFooter .footerBottomLinks a {
+  font-family: "SOS Sphere Fez Footer", "Sphere Fez", "Arial Narrow", sans-serif !important;
+  font-synthesis: none;
+}
+
+#siteFooter .footerLogo {
+  font-weight: 400 !important;
+  letter-spacing: .16em;
+  text-shadow: 0 0 12px rgba(174, 105, 255, .16), 0 0 28px rgba(111, 55, 170, .10);
+}
+
+#siteFooter .footerBrand p,
+#siteFooter .footerColumn h3 {
+  font-weight: 400 !important;
+  letter-spacing: .18em;
+}
+
+#siteFooter .footerBrand span,
+#siteFooter .footerColumn a,
+#siteFooter .footerBottom p,
+#siteFooter .footerBottomLinks a {
+  font-weight: 400 !important;
+  letter-spacing: .045em;
+}
+
+#siteFooter .footerColumn a:hover,
+#siteFooter .footerBottomLinks a:hover {
+  text-shadow: 0 0 10px rgba(187, 122, 255, .22);
+}
