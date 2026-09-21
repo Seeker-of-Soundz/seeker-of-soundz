@@ -1,0 +1,10 @@
+Seeker Of SoundZ v7.0.8
+
+Focused layout/typography repair:
+- Index hero name now displays exactly as “Seeker Of Soundz”.
+- Keeps Sphere Fez on the index brand.
+- Refined and reduced footer typography while preserving Sphere Fez.
+- Added responsive containment for card/module headings so text cannot spill outside panels.
+- Fixed featured video heading clipping/coverage.
+- Added desktop, tablet, mobile, and narrow-phone layout safeguards.
+- No JavaScript systems, profile settings, loaders, particles, auth, forums, collaboration, admin, or media behavior changed.

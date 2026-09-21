@@ -1,0 +1,92 @@
+/* Seeker Of SoundZ v7.0.8 — focused typography + responsive containment fixes.
+   Does not alter JS behavior, profile settings, effects, navigation, or data systems. */
+
+/* Index brand: preserve exact requested casing and keep the full name visible. */
+#hero .heroLogoText{
+  box-sizing:border-box;
+  width:min(100%,1100px)!important;
+  max-width:calc(100vw - 32px)!important;
+  padding-inline:8px;
+  font-family:"Sphere Fez","Arial Narrow","Rajdhani","Segoe UI",sans-serif!important;
+  font-weight:400!important;
+  font-size:clamp(1.65rem,3.65vw,3.45rem)!important;
+  line-height:1.08!important;
+  letter-spacing:.055em!important;
+  white-space:nowrap!important;
+  overflow:visible!important;
+  text-transform:none!important;
+  text-shadow:0 0 8px rgba(255,255,255,.13),0 0 22px rgba(174,105,255,.22),0 0 42px rgba(105,48,170,.11)!important;
+}
+
+/* Footer refinement: Sphere Fez stays, but the footer no longer feels oversized. */
+#siteFooter{padding-top:clamp(46px,6vw,78px)!important;padding-bottom:26px!important;}
+#siteFooter .footerTop{gap:clamp(34px,5vw,72px)!important;}
+#siteFooter .footerLogo{
+  font-size:clamp(1.12rem,1.75vw,1.65rem)!important;
+  line-height:1.2!important;
+  letter-spacing:.105em!important;
+  white-space:normal;
+}
+#siteFooter .footerBrand p{font-size:clamp(.66rem,.72vw,.76rem)!important;letter-spacing:.14em!important;line-height:1.45!important;}
+#siteFooter .footerBrand span{font-size:clamp(.76rem,.82vw,.9rem)!important;line-height:1.55!important;}
+#siteFooter .footerColumn h3{font-size:clamp(.68rem,.7vw,.76rem)!important;letter-spacing:.14em!important;line-height:1.35!important;}
+#siteFooter .footerColumn a{font-size:clamp(.74rem,.78vw,.88rem)!important;line-height:1.5!important;letter-spacing:.025em!important;}
+#siteFooter .footerBottom p,#siteFooter .footerBottomLinks a{font-size:clamp(.68rem,.72vw,.78rem)!important;line-height:1.5!important;letter-spacing:.02em!important;}
+#siteFooter .footerDivider{margin:clamp(38px,5vw,60px) 0 24px!important;}
+
+/* Prevent Sphere Fez headings from escaping cards/modules. */
+:is(.videoFeature,.videoDetails,.releaseCard,.musicFeatureCard,.featuredEvent,.eventCard,.socialCard,.galleryCard,.merchCard,.productCard,.memberCard,.profileCard,.collabCard,.adminCard,.card,.panel,.modalPanel) > *,
+:is(.videoFeature,.videoDetails,.releaseCard,.musicFeatureCard,.featuredEvent,.eventCard,.socialCard,.galleryCard,.merchCard,.productCard,.memberCard,.profileCard,.collabCard,.adminCard,.card,.panel,.modalPanel) :is(h1,h2,h3,h4,p,span,a){
+  min-width:0;
+  max-width:100%;
+}
+:is(.videoDetails,.releaseCard,.musicFeatureCard,.featuredEvent,.eventCard,.socialCard,.galleryCard,.merchCard,.productCard,.memberCard,.profileCard,.collabCard,.adminCard,.card,.panel,.modalPanel) :is(h1,h2,h3,h4){
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:auto;
+}
+
+/* Featured video is the most visible clipping case: give the copy enough room. */
+.videoFeature{grid-template-columns:minmax(0,1.12fr) minmax(340px,.88fr)!important;}
+.videoDetails{min-width:0!important;overflow:hidden!important;padding:clamp(26px,3.6vw,52px)!important;}
+.videoDetails h2,.videoDetails h3{
+  width:100%;
+  font-size:clamp(1.7rem,3.05vw,3rem)!important;
+  line-height:1.08!important;
+  letter-spacing:.015em!important;
+  overflow-wrap:anywhere!important;
+}
+.videoDescription{max-width:100%!important;overflow-wrap:anywhere;}
+.videoMeta,.videoActions{max-width:100%;}
+.videoActions > *{min-width:0;max-width:100%;}
+
+/* General responsive safety for large Sphere Fez section headings. */
+.sectionHeading{max-width:min(100%,920px)!important;}
+.sectionHeading h1,.sectionHeading h2,.section-title{
+  max-width:100%;
+  font-size:clamp(1.85rem,4.1vw,4.35rem);
+  line-height:1.08;
+  overflow-wrap:anywhere;
+}
+
+@media(max-width:1000px){
+  .videoFeature{grid-template-columns:1fr!important;}
+  .videoFrame{min-height:clamp(280px,55vw,480px)!important;}
+  .videoDetails{overflow:visible!important;}
+  #siteFooter .footerTop{grid-template-columns:1fr!important;}
+  #siteFooter .footerBrand{max-width:620px;}
+}
+@media(max-width:700px){
+  #hero .heroLogoText{font-size:clamp(1.16rem,6.25vw,1.9rem)!important;letter-spacing:.025em!important;max-width:calc(100vw - 20px)!important;}
+  .sectionHeading h1,.sectionHeading h2,.section-title{font-size:clamp(1.65rem,8.8vw,2.7rem)!important;}
+  .videoDetails h2,.videoDetails h3{font-size:clamp(1.55rem,8vw,2.45rem)!important;}
+  .videoDetails{padding:24px 18px!important;}
+  #siteFooter .footerNavigation{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:28px 22px!important;}
+  #siteFooter .footerBottom{align-items:flex-start!important;flex-direction:column!important;gap:14px!important;}
+}
+@media(max-width:460px){
+  #siteFooter .footerNavigation{grid-template-columns:1fr!important;}
+  #siteFooter .footerLogo{font-size:1.05rem!important;letter-spacing:.075em!important;}
+  .videoActions{flex-direction:column;align-items:stretch;}
+  .videoActions > *{width:100%;text-align:center;}
+}
