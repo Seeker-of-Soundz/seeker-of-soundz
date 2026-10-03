@@ -494,9 +494,12 @@ function draw(){
 async function playPreview(){
  ensureAudioGraph();if(audioContext)await audioContext.resume();
  const start=Math.max(0,Number(startInput.value||0));
- if(window.SOSVideoClipsV4240?.hasClips?.())await window.SOSVideoClipsV4240.startSequence(start,false);
- else video.currentTime=start;
- if(audio.src){audio.currentTime=window.SOSMediaSettingsV4330?.mapMusicTime?.(start)??(start%Math.max(.01,audio.duration||1));audio.loop=false}syncVolumes();
+ const end=Math.max(start,Number(endInput.value||video.duration||0));
+ let resume=window.SOSVideoClipsV4240?.globalTime?.()??Number(video.currentTime||start);
+ if(video.ended||!Number.isFinite(resume)||resume<start||(end>start&&resume>=end-.01))resume=start;
+ if(window.SOSVideoClipsV4240?.hasClips?.())await window.SOSVideoClipsV4240.startSequence(resume,false);
+ else video.currentTime=resume;
+ if(audio.src){audio.currentTime=window.SOSMediaSettingsV4330?.mapMusicTime?.(resume)??(resume%Math.max(.01,audio.duration||1));audio.loop=false}syncVolumes();
  await video.play();
  if(audio.src&&window.SOSMediaSettingsV4330?.musicActive?.(start)!==false)await audio.play().catch(()=>{});updateAudioStatus(audioInput.files[0]?.name||'Music playing','Synchronized with the single video preview.',true);cancelAnimationFrame(raf);draw();setStatus('Preview playing. Open Effects to change presets; selections update live.');
 }
@@ -588,7 +591,13 @@ document.addEventListener('input',event=>{if(event.target.matches('#effectStreng
 logoInput?.addEventListener('change',()=>{const file=logoInput.files?.[0];if(!file)return;revoke(logoUrl);logoUrl=URL.createObjectURL(file);const image=new Image();image.onload=()=>{logoImage=image;$('#producerLogoNameV4210').textContent=file.name;redrawFrame()};image.src=logoUrl});
 $('#producerRemoveLogoV4210')?.addEventListener('click',()=>{logoImage=null;revoke(logoUrl);logoUrl='';if(logoInput)logoInput.value='';$('#producerLogoNameV4210').textContent='PNG, JPG, WEBP, or GIF';redrawFrame()});
 $('#producerClearTextV4210')?.addEventListener('click',()=>{if(overlayText)overlayText.value='';redrawFrame()});
-video.addEventListener('play',()=>{cancelAnimationFrame(raf);draw()});video.addEventListener('pause',()=>setTimeout(()=>cancelAnimationFrame(raf),70));video.addEventListener('seeked',redrawFrame);
+video.addEventListener('play',()=>{cancelAnimationFrame(raf);draw()});
+video.addEventListener('pause',()=>{
+ /* Paint and retain the paused frame instead of cancelling before the canvas
+    has a chance to display the current video frame. */
+ cancelAnimationFrame(raf);draw();setTimeout(()=>cancelAnimationFrame(raf),140);
+});
+video.addEventListener('seeked',redrawFrame);
 videoInput.addEventListener('change',()=>{
  const file=videoInput.files[0];if(!file)return;revoke(videoUrl);videoUrl=URL.createObjectURL(file);video.src=videoUrl;video.load();$('#composerVideoNameV4180').textContent=file.name;setStatus('Video loaded. Effects and overlays can preview immediately; licensed music is optional.');
 });

@@ -1,0 +1,12 @@
+Seeker Of SoundZ v7.0.13 — Producer Hub Timeline Cleanup
+
+Based directly on v7.0.12 VIP Headline Resize.
+Focused changes only:
+- Dedicated timeline control rail prevents track labels/mute controls from overlaying clips.
+- Music offset controls moved into a clean row beneath the waveform.
+- Larger/selectable lane targets and corrected playhead alignment.
+- Render Queue Clear Queue now clears the entire local queue.
+- Queue history is capped and stale interrupted tasks are cleaned up.
+- Duplicate active beat-analysis rows are prevented.
+- No SOS scrolling/loading background added.
+- Existing Producer Hub editing/render systems preserved.

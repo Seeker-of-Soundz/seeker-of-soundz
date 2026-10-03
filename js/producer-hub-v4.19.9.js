@@ -67,8 +67,14 @@ function ensureModuleButtons(){
 }
 
 function syncMediaTime(time){
- if(video&&Number.isFinite(video.duration))video.currentTime=Math.max(0,Math.min(time,video.duration));
- if(audio&&Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(time,audio.duration));
+ const target=Math.max(0,Number(time)||0);
+ if(window.SOSVideoClipsV4240?.seekGlobal){
+  window.SOSVideoClipsV4240.seekGlobal(target);
+ }else if(video&&Number.isFinite(video.duration)){
+  video.currentTime=Math.max(0,Math.min(target,video.duration));
+ }
+ const mapped=window.SOSMediaSettingsV4330?.mapMusicTime?.(target);
+ if(audio&&Number.isFinite(audio.duration))audio.currentTime=Math.max(0,Math.min(Number.isFinite(mapped)?mapped:target,audio.duration));
 }
 async function playMedia(){
  if(!video?.src&&!video?.currentSrc){
@@ -76,11 +82,19 @@ async function playMedia(){
   return;
  }
  try{
-  if(audio?.src||audio?.currentSrc){
-   audio.currentTime=Math.min(video.currentTime||0,audio.duration||video.currentTime||0);
-   await audio.play().catch(()=>{});
-  }
+  /* Resume from the current project clock. v7.0.15 no longer routes every
+     Play press through Preview Project because that restarted the composer
+     and could leave the canvas blank after Pause. */
+  const start=Number($('#composerStartV4180')?.value||0);
+  const end=Number($('#composerEndV4180')?.value||video.duration||0);
+  let time=window.SOSVideoClipsV4240?.globalTime?.()??Number(video.currentTime||0);
+  if(video.ended || !Number.isFinite(time) || time < start || (end>start && time>=end-.01)) time=start;
+  if(window.SOSVideoClipsV4240?.hasClips?.())await window.SOSVideoClipsV4240.startSequence(time,false);
+  else video.currentTime=Math.max(start,time);
+  const musicTime=window.SOSMediaSettingsV4330?.mapMusicTime?.(time);
+  if(audio?.src && Number.isFinite(musicTime)) audio.currentTime=Math.max(0,Math.min(musicTime,audio.duration||musicTime));
   await video.play();
+  if(audio?.src && window.SOSMediaSettingsV4330?.musicActive?.(time)!==false) await audio.play().catch(()=>{});
  }catch(error){
   toast(error.message||'The browser could not start playback.','Playback unavailable');
  }
@@ -88,16 +102,13 @@ async function playMedia(){
 function pauseMedia(){video?.pause();audio?.pause()}
 function restartMedia(){pauseMedia();syncMediaTime(Number($('#composerStartV4180')?.value||0))}
 function timelineDuration(){
- return Math.max(
-  0,
-  Number.isFinite(video?.duration)?video.duration:0,
-  Number.isFinite(audio?.duration)?audio.duration:0
- );
+ return Math.max(0,window.SOSVideoClipsV4240?.totalDuration?.()||0,Number.isFinite(video?.duration)?video.duration:0);
 }
 function seekFromPointer(event,target){
  const duration=timelineDuration();
  if(!duration)return;
- const rect=target.getBoundingClientRect();
+ const lane=$('#timelineVideoLaneV4240')||target;
+ const rect=lane.getBoundingClientRect();
  const x=Math.max(0,Math.min(rect.width,event.clientX-rect.left));
  syncMediaTime(duration*(x/Math.max(1,rect.width)));
 }

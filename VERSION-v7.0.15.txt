@@ -1,0 +1,9 @@
+Seeker Of SoundZ v7.0.15
+Producer Editor reliability and workflow upgrade.
+- Pause/resume retains the current frame and project time.
+- Quick Export delegates to the existing direct renderer/download.
+- Uploaded music auto-analyzes and feeds the existing beat Auto-Sync effects/camera system.
+- Real-time music drift correction follows the project clock.
+- Nonessential site animation pauses during rendering to reduce overhead.
+- Effects/editor panels receive spacing and responsive cleanup.
+- Existing site/backend/project systems preserved.

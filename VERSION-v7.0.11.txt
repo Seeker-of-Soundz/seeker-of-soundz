@@ -1,0 +1,4 @@
+Seeker Of SoundZ v7.0.11
+Typography fit pass only.
+No SOS scrolling/loading background feature added.
+Reduced and contained oversized headings across the Music page and other site pages.

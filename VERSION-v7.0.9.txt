@@ -1,0 +1,4 @@
+Seeker Of SoundZ v7.0.9
+Typography containment repair + Admin Hub Typography Studio.
+Preserves existing site layout, Supabase systems, effects, navigation and content managers.
+Run supabase/patch-v7.0.9-site-typography.sql once to publish font choices across devices.
