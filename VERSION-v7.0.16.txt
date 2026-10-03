@@ -1,0 +1,7 @@
+Seeker Of SoundZ v7.0.16
+- Safer export finalization: 99% means encoding is still finalizing; 100% appears only after MediaRecorder has stopped and a non-empty Blob exists.
+- Safe render cancellation discards partial output and cleans capture tracks without reporting false completion.
+- MP3 upload automatically enables the on-video waveform overlay.
+- Beat analysis automatically triggers Auto-Sync with visual effects, camera motion, shake, bass-drop distortion and all effect pools enabled.
+- Auto-Sync retries until beat markers are actually available in the timeline.
+- Existing site layout, Supabase, project/preset formats and editor systems preserved.

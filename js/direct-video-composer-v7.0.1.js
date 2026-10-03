@@ -10,7 +10,7 @@ const previewButton=$('#composerPreviewButtonV4180'),renderButton=$('#composerRe
 const musicVolume=$('#composerMusicVolumeV4180'),sourceVolume=$('#composerSourceVolumeV4180'),audioStatus=$('#composerAudioStatusV4182');
 const startInput=$('#composerStartV4180'),endInput=$('#composerEndV4180'),format=$('#composerFormatV4180');
 const directRenderPanel=$('#directRenderStatusV4212'),directRenderProgress=$('#directRenderProgressV4212'),directRenderPercent=$('#directRenderPercentV4212'),directRenderMessage=$('#directRenderMessageV4212'),cancelDirectRender=$('#cancelDirectRenderV4212');
-let videoUrl='',audioUrl='',raf=0,rendering=false,activeRecorder=null,renderCancelled=false;
+let videoUrl='',audioUrl='',raf=0,rendering=false,activeRecorder=null,renderCancelled=false,renderFinalizing=false,activeRenderStream=null;
 let audioContext=null,videoNode=null,audioNode=null,videoGain=null,musicGain=null,analyser=null,freq=null,mediaDestination=null;
 let logoImage=null,logoUrl='';
 const logoInput=$('#producerLogoInputV4210'),logoEnabled=$('#producerLogoEnabledV4210');
@@ -521,7 +521,7 @@ async function render(){
  if(audio.src){audio.currentTime=window.SOSMediaSettingsV4330?.mapMusicTime?.(start)??(start%Math.max(.01,audio.duration||1));audio.loop=false}
  syncVolumes();
 
- const stream=canvas.captureStream(30);
+ const stream=canvas.captureStream(30); activeRenderStream=stream;
  mediaDestination?.stream?.getAudioTracks().forEach(track=>stream.addTrack(track));
  const requested=format.value;
  const candidates=requested==='auto'
@@ -541,22 +541,33 @@ async function render(){
   setStatus(`Render failed: ${message}`);
  };
  recorder.onstop=()=>{
-  activeRecorder=null;
+  activeRecorder=null; renderFinalizing=false;
+  activeRenderStream?.getTracks?.().forEach(track=>track.stop()); activeRenderStream=null;
   if(renderCancelled){
    rendering=false;ready();
-   if(directRenderMessage)directRenderMessage.textContent='Render cancelled. No download was created.';
-   setStatus('Render cancelled.');
+   if(directRenderProgress)directRenderProgress.style.width='0%';
+   if(directRenderPercent)directRenderPercent.textContent='Cancelled';
+   if(directRenderMessage)directRenderMessage.textContent='Render cancelled safely. No partial file was downloaded.';
+   setStatus('Render cancelled safely.');
+   window.dispatchEvent(new CustomEvent('sos:render-cancelled'));
    return;
   }
-  const blob=new Blob(chunks,{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  const blob=new Blob(chunks,{type:mime});
+  if(blob.size<1024){
+   rendering=false;ready();
+   if(directRenderMessage)directRenderMessage.textContent='Render failed while finalizing: the browser produced an empty video file. Try WEBM or lower quality.';
+   setStatus('Render failed while finalizing. No empty download was created.');
+   return;
+  }
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url;a.download=`sos-finished-project-${Date.now()}.${mime.includes('mp4')?'mp4':'webm'}`;
-  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2500);
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),15000);
   rendering=false;ready();
   if(directRenderProgress)directRenderProgress.style.width='100%';
   if(directRenderPercent)directRenderPercent.textContent='100%';
-  if(directRenderMessage)directRenderMessage.textContent=`Finished project downloaded as ${mime.includes('mp4')?'MP4':'WEBM'} · ${(blob.size/1048576).toFixed(1)} MB`;
-  setStatus(`Finished project downloaded as ${mime.includes('mp4')?'MP4':'WEBM'}.`);
-  window.dispatchEvent(new CustomEvent('sos:render-complete',{detail:{title:'Producer Hub Project',format:mime,size:blob.size}}));
+  if(directRenderMessage)directRenderMessage.textContent=`Render finalized · ${mime.includes('mp4')?'MP4':'WEBM'} · ${(blob.size/1048576).toFixed(1)} MB · browser download started`;
+  setStatus(`Render finalized successfully. Your ${mime.includes('mp4')?'MP4':'WEBM'} download has started.`);
+  window.dispatchEvent(new CustomEvent('sos:render-complete',{detail:{title:'Producer Hub Project',format:mime,size:blob.size,downloadStarted:true}}));
  };
 
  await video.play();
@@ -573,17 +584,25 @@ async function render(){
   if(directRenderMessage)directRenderMessage.textContent=`Rendering ${percent}% · combining video, effects, logo, text, and audio.`;
   window.dispatchEvent(new CustomEvent('sos:render-progress',{detail:{progress,percent}}));
   if((window.SOSVideoClipsV4240?.globalTime?.()??video.currentTime)>=end||(video.ended&&!window.SOSVideoClipsV4240?.hasNext?.())){
-   video.pause();audio?.pause();if(recorder.state!=='inactive')recorder.stop();cancelAnimationFrame(raf);return;
+   video.pause();audio?.pause();cancelAnimationFrame(raf);
+   renderFinalizing=true;
+   if(directRenderProgress)directRenderProgress.style.width='99%';
+   if(directRenderPercent)directRenderPercent.textContent='99%';
+   if(directRenderMessage)directRenderMessage.textContent='Finalizing encoded video and audio… do not close this tab yet.';
+   try{if(recorder.state==='recording')recorder.requestData()}catch(_){}
+   setTimeout(()=>{if(!renderCancelled&&recorder.state!=='inactive')recorder.stop()},350);
+   return;
   }
   requestAnimationFrame(monitor);
  };
  monitor();
 }
 cancelDirectRender?.addEventListener('click',()=>{
- if(!rendering)return;
- renderCancelled=true;rendering=false;video.pause();audio?.pause();cancelAnimationFrame(raf);
- if(activeRecorder&&activeRecorder.state!=='inactive')activeRecorder.stop();
- if(directRenderMessage)directRenderMessage.textContent='Cancelling direct render…';
+ if(!rendering&&!renderFinalizing)return;
+ renderCancelled=true; video.pause();audio?.pause();cancelAnimationFrame(raf);
+ if(directRenderMessage)directRenderMessage.textContent='Cancelling safely and discarding partial render…';
+ try{if(activeRecorder?.state==='recording')activeRecorder.requestData()}catch(_){}
+ setTimeout(()=>{try{if(activeRecorder&&activeRecorder.state!=='inactive')activeRecorder.stop()}catch(_){rendering=false;renderFinalizing=false;ready()}},80);
 });
 function redrawFrame(){if(!video.src)return;cancelAnimationFrame(raf);draw();if(video.paused)setTimeout(()=>cancelAnimationFrame(raf),90)}
 document.addEventListener('change',event=>{if(event.target.matches('[data-effect],#effectStrengthV4171,#producerLogoEnabledV4210,#producerLogoPositionV4210,#producerLogoSizeV4210,#producerLogoOpacityV4210,#producerTextV4210,#producerTextStyleV4210,#producerTextPositionV4210,#producerTextSizeV4210,#producerTextOpacityV4210'))redrawFrame()});
