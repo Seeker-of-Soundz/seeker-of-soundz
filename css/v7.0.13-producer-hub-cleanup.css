@@ -1,0 +1,91 @@
+/* Seeker Of SoundZ v7.0.13 — Producer Hub timeline cleanup
+   Layout-only repair: keeps the existing editor/render systems intact. */
+
+/* Give every track a dedicated control rail so labels/buttons never sit on top of clips. */
+.timelineTracksV4190{--sos-track-rail:150px;isolation:isolate}
+.timelineTracksV4190>article{
+  grid-template-columns:var(--sos-track-rail) minmax(0,1fr)!important;
+  column-gap:0!important;
+  min-width:0!important;
+  overflow:visible!important;
+}
+.timelineTracksV4190>article>header{
+  position:relative!important;
+  z-index:90!important;
+  display:grid!important;
+  grid-template-columns:22px minmax(0,1fr) 30px!important;
+  align-items:center!important;
+  gap:5px!important;
+  width:auto!important;
+  min-width:0!important;
+  height:100%!important;
+  padding:7px 8px!important;
+  box-sizing:border-box!important;
+  overflow:hidden!important;
+  border-right:1px solid rgba(255,255,255,.08)!important;
+  background:#0b0710!important;
+  pointer-events:auto!important;
+}
+.timelineTracksV4190>article>header>i{width:20px!important;text-align:center!important;pointer-events:none}
+.timelineTracksV4190>article>header>span{
+  display:block!important;min-width:0!important;max-width:100%!important;
+  overflow:hidden!important;text-overflow:ellipsis!important;white-space:normal!important;
+  line-height:1.15!important;font-size:.54rem!important;pointer-events:none
+}
+.timelineTracksV4190>article>header .timelineMuteButtonV4240{
+  position:relative!important;inset:auto!important;z-index:95!important;
+  width:28px!important;min-width:28px!important;height:28px!important;
+  margin:0!important;padding:0!important;display:grid!important;place-items:center!important;
+  pointer-events:auto!important;cursor:pointer!important
+}
+.timelineTracksV4190>article>.timelineLaneV4190{
+  position:relative!important;z-index:4!important;min-width:0!important;
+  overflow:visible!important;pointer-events:auto!important
+}
+.timelineVideoSegmentV4240,.timelineClipV4190,.musicTrimHandleV4330,.clipTrimHandleV4310,.beatMarkerV4190{
+  pointer-events:auto!important
+}
+
+/* Keep playhead/ruler aligned with the actual editable lane rather than the label rail. */
+.timelinePlayheadV4190{left:var(--sos-track-rail)!important;pointer-events:none!important}
+.timelineRulerV4190,.timelineProjectRangeV4300{padding-left:var(--sos-track-rail)!important;box-sizing:border-box!important}
+.timelineProjectRangeV4300::before{left:calc(var(--sos-track-rail) + 8px)!important}
+
+/* Music controls belong below the waveform, not on top of the left track controls. */
+.timelineTracksV4190>article[data-track="music"]{
+  height:auto!important;min-height:154px!important;
+  grid-template-rows:minmax(96px,1fr) auto!important;
+}
+.timelineTracksV4190>article[data-track="music"]>header{grid-row:1 / span 2!important}
+.timelineTracksV4190>article[data-track="music"]>.timelineMusicLaneV4270{grid-column:2!important;grid-row:1!important;min-height:96px!important}
+.timelineTracksV4190>article[data-track="music"]>.musicOffsetDockV701{
+  grid-column:2!important;grid-row:2!important;position:relative!important;z-index:20!important;
+  margin:6px 6px 7px!important;width:calc(100% - 12px)!important;min-width:0!important
+}
+.musicOffsetDockV701 .musicRangeUtilityV4350{display:grid!important;grid-template-columns:minmax(180px,1fr) minmax(120px,.55fr) auto auto!important;align-items:end!important}
+.musicOffsetDockV701 .musicRangeUtilityV4350 select,
+.musicOffsetDockV701 .musicRangeUtilityV4350 input{width:100%!important;max-width:100%!important}
+.musicOffsetDockV701 .musicRangeUtilityV4350 button{min-height:31px!important}
+
+/* Slightly roomier lanes make each target individually selectable. */
+.timelineTracksV4190>article[data-track="video"]{min-height:76px!important;height:var(--lane-height,76px)!important}
+.timelineTracksV4190>article[data-track="effects"],
+.timelineTracksV4190>article[data-track="camera"],
+.timelineTracksV4190>article[data-track="markers"]{min-height:70px!important;height:var(--lane-height,70px)!important}
+
+/* Render queue stays compact and cannot grow into a giant history wall. */
+.renderQueueV4190{overflow:hidden!important}
+#renderQueueListV4190{max-height:390px!important;overflow:auto!important;padding-right:3px!important;scrollbar-gutter:stable}
+.renderQueueV4190.isEmptyV701 #renderQueueListV4190{display:none!important}
+
+@media(max-width:900px){
+  .timelineTracksV4190{--sos-track-rail:126px}
+  .musicOffsetDockV701 .musicRangeUtilityV4350{grid-template-columns:1fr 1fr!important}
+}
+@media(max-width:650px){
+  .timelineTracksV4190{--sos-track-rail:102px}
+  .timelineTracksV4190>article>header{grid-template-columns:18px minmax(0,1fr)!important;align-content:center!important}
+  .timelineTracksV4190>article>header .timelineMuteButtonV4240{grid-column:1/-1!important;width:100%!important;height:24px!important}
+  .musicOffsetDockV701 .musicRangeUtilityV4350{grid-template-columns:1fr!important}
+  .timelineTracksV4190>article[data-track="music"]{min-height:245px!important}
+}
