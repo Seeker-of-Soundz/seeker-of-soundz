@@ -1,0 +1,120 @@
+/* Seeker Of SoundZ v7.0.11 — typography fit pass only.
+   No loader/background/JS/layout systems are changed. */
+
+/* Global heading safety: keep Sphere Fez, but stop headings escaping their own container. */
+:is(h1,h2,h3,h4,.section-title,.sectionTitle,.page-title,.pageTitle,.hero-title,.heroTitle,
+.card-title,.cardTitle,.panel-title,.panelTitle,.modal-title,.modalTitle,
+[class*="Heading"],[class*="heading"],[class*="Title"],[class*="title"]):not(button):not(input):not(textarea):not(select){
+  box-sizing:border-box;
+  min-width:0;
+  max-width:100%;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  hyphens:none!important;
+}
+
+/* Main page/section headings: slightly smaller than the previous pass. */
+.sectionHeading{max-width:min(100%,980px)!important;min-width:0!important}
+.sectionHeading h1,.sectionHeading h2,.section-title,
+.pageHeroContent h1,.pageHeroContent h2{
+  font-size:clamp(1.7rem,3.15vw,3.35rem)!important;
+  line-height:1.08!important;
+  letter-spacing:.025em!important;
+  white-space:normal!important;
+  text-wrap:balance;
+}
+
+/* Music page — the wide display font needs substantially more breathing room. */
+body:has(#featuredRelease) .musicFeatureCard{
+  grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr)!important;
+  gap:clamp(24px,3vw,42px)!important;
+}
+body:has(#featuredRelease) .musicFeatureContent{min-width:0!important;max-width:100%!important;overflow:hidden}
+body:has(#featuredRelease) .musicFeatureContent h3{
+  width:100%;
+  max-width:100%;
+  font-size:clamp(1.8rem,3.35vw,3.7rem)!important;
+  line-height:1.04!important;
+  letter-spacing:.012em!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+}
+body:has(#featuredRelease) .djStageHeader{min-width:0!important}
+body:has(#featuredRelease) .djStageHeader h2{
+  max-width:100%!important;
+  font-size:clamp(1.35rem,2.35vw,2.05rem)!important;
+  line-height:1.12!important;
+  letter-spacing:.015em!important;
+  white-space:normal!important;
+}
+
+/* Card/module headings across public pages. */
+:is(.releaseCard,.musicMiniCard,.musicCommerceCard,.videoDetails,.videoCard,.eventCard,.featuredEvent,
+.socialCard,.galleryCard,.merchCard,.productCard,.memberCard,.profileCard,.collabCard,.contactPanel,
+.forumTopicCard,.forumPost,.card,.panel) :is(h2,h3,h4){
+  min-width:0!important;
+  max-width:100%!important;
+  font-size:clamp(1.05rem,2vw,1.85rem)!important;
+  line-height:1.12!important;
+  letter-spacing:.018em!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+}
+
+/* Preserve intentionally larger featured/story headings, but keep them contained. */
+:is(.aboutProcessContent,.galleryStoryContent,.galleryCallout,.videoFeature) :is(h2,h3){
+  font-size:clamp(1.7rem,3vw,3.15rem)!important;
+  line-height:1.08!important;
+  white-space:normal!important;
+  text-wrap:balance;
+}
+
+/* Long social/platform names need a little extra reduction. */
+.socialCardContent h3{font-size:clamp(1.12rem,1.75vw,1.65rem)!important;letter-spacing:.015em!important}
+
+@media(max-width:980px){
+  body:has(#featuredRelease) .musicFeatureCard{grid-template-columns:1fr!important}
+  body:has(#featuredRelease) .musicFeatureContent{overflow:visible}
+}
+@media(max-width:700px){
+  .sectionHeading h1,.sectionHeading h2,.section-title,.pageHeroContent h1,.pageHeroContent h2{
+    font-size:clamp(1.5rem,7.1vw,2.35rem)!important;
+    letter-spacing:.018em!important;
+  }
+  body:has(#featuredRelease) .musicFeatureContent h3{font-size:clamp(1.55rem,7vw,2.4rem)!important}
+  :is(.aboutProcessContent,.galleryStoryContent,.galleryCallout,.videoFeature) :is(h2,h3){font-size:clamp(1.55rem,7vw,2.45rem)!important}
+  :is(.releaseCard,.musicMiniCard,.musicCommerceCard,.videoDetails,.videoCard,.eventCard,.featuredEvent,
+  .socialCard,.galleryCard,.merchCard,.productCard,.memberCard,.profileCard,.collabCard,.contactPanel,
+  .forumTopicCard,.forumPost,.card,.panel) :is(h2,h3,h4){font-size:clamp(1rem,5.5vw,1.6rem)!important}
+}
+
+/* v7.0.12 — VIP music access headline containment.
+   Keep the existing Sphere Fez look, but stop this long sentence from dominating
+   the callout or clipping MEMBERSHIP on desktop/tablet/mobile. */
+.vipAccessCallout > div:first-child{min-width:0!important;max-width:min(100%,820px)!important}
+.vipAccessCallout h2{
+  width:100%!important;
+  max-width:760px!important;
+  margin:0 0 22px!important;
+  font-size:clamp(1.75rem,2.65vw,3.05rem)!important;
+  line-height:1.08!important;
+  letter-spacing:.012em!important;
+  white-space:normal!important;
+  word-break:normal!important;
+  overflow-wrap:normal!important;
+  hyphens:none!important;
+  text-wrap:balance;
+}
+@media(max-width:1100px){
+  .vipAccessCallout{gap:clamp(24px,4vw,42px)!important}
+  .vipAccessCallout h2{font-size:clamp(1.65rem,3.25vw,2.6rem)!important;max-width:680px!important}
+}
+@media(max-width:820px){
+  .vipAccessCallout{align-items:stretch!important}
+  .vipAccessCallout h2{font-size:clamp(1.55rem,5.4vw,2.25rem)!important;line-height:1.1!important;max-width:100%!important}
+}
+@media(max-width:520px){
+  .vipAccessCallout h2{font-size:clamp(1.35rem,7vw,1.85rem)!important;line-height:1.12!important;letter-spacing:.008em!important}
+}
