@@ -1,0 +1,29 @@
+@font-face{font-family:"SOS Brigold";src:url("../assets/fonts/member-custom/Brigold%20DEMO.otf") format("opentype");font-display:swap}
+html[data-member-font="brigold"]{--sos-member-font:"SOS Brigold",sans-serif}
+@font-face{font-family:"SOS Scientific";src:url("../assets/fonts/member-custom/Scientific%20Theories%20Demo.otf") format("opentype");font-display:swap}
+html[data-member-font="scientific"]{--sos-member-font:"SOS Scientific",sans-serif}
+@font-face{font-family:"SOS Metalico";src:url("../assets/fonts/member-custom/Metalico.ttf") format("truetype");font-display:swap}
+html[data-member-font="metalico"]{--sos-member-font:"SOS Metalico",sans-serif}
+@font-face{font-family:"SOS RetroByte";src:url("../assets/fonts/member-custom/RetroByte.ttf") format("truetype");font-display:swap}
+html[data-member-font="retrobyte"]{--sos-member-font:"SOS RetroByte",sans-serif}
+@font-face{font-family:"SOS Eroded";src:url("../assets/fonts/member-custom/ERODED%20PERSONAL%20USE.ttf") format("truetype");font-display:swap}
+html[data-member-font="eroded"]{--sos-member-font:"SOS Eroded",sans-serif}
+@font-face{font-family:"SOS Malegroth";src:url("../assets/fonts/member-custom/Malegroth%20demo.otf") format("opentype");font-display:swap}
+html[data-member-font="malegroth"]{--sos-member-font:"SOS Malegroth",sans-serif}
+@font-face{font-family:"SOS Cartoonish";src:url("../assets/fonts/member-custom/Cartoonish.ttf") format("truetype");font-display:swap}
+html[data-member-font="cartoonish"]{--sos-member-font:"SOS Cartoonish",sans-serif}
+@font-face{font-family:"SOS Godfather";src:url("../assets/fonts/member-custom/TheGodfather-v2.ttf") format("truetype");font-display:swap}
+html[data-member-font="godfather"]{--sos-member-font:"SOS Godfather",sans-serif}
+@font-face{font-family:"SOS Nonfiction";src:url("../assets/fonts/member-custom/NONFICTION.TTF") format("truetype");font-display:swap}
+html[data-member-font="nonfiction"]{--sos-member-font:"SOS Nonfiction",sans-serif}
+html[data-member-nav-motion] .navLinks a{color:var(--member-nav-color,#fff)!important;font-family:var(--member-nav-font,inherit)!important}
+html[data-member-nav-motion] .memberNavPreviewV7033 span{color:var(--member-nav-color,#fff);font-family:var(--member-nav-font,inherit)!important}
+html[data-member-nav-motion="orbit"] .navLinks a:hover{transform:rotate(-4deg) scale(1.08)!important}
+html[data-member-nav-motion="flicker"] .navLinks a:hover{animation:sosNavFlicker .8s steps(2,end) infinite}
+html[data-member-nav-motion="glitch"] .navLinks a:hover{animation:sosNavGlitch .45s steps(2,end) infinite}
+html[data-member-nav-motion="wave"] .navLinks a:hover{animation:sosNavWave .7s ease infinite}
+html[data-member-nav-motion="zoom"] .navLinks a:hover{transform:scale(1.13)!important}
+html[data-member-nav-motion="flip"] .navLinks a:hover{transform:perspective(500px) rotateY(18deg)!important}
+@keyframes sosNavFlicker{0%,55%,100%{opacity:1}56%,70%{opacity:.35}}@keyframes sosNavGlitch{0%,100%{transform:translate(0)}30%{transform:translate(2px,-1px)}60%{transform:translate(-2px,1px)}}@keyframes sosNavWave{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.memberNavPreviewV7033[data-motion="orbit"] span.active{transform:rotate(-4deg) scale(1.08)}.memberNavPreviewV7033[data-motion="flicker"] span.active{animation:sosNavFlicker .8s steps(2,end) infinite}.memberNavPreviewV7033[data-motion="glitch"] span.active{animation:sosNavGlitch .45s steps(2,end) infinite}.memberNavPreviewV7033[data-motion="wave"] span.active{animation:sosNavWave .7s ease infinite}.memberNavPreviewV7033[data-motion="zoom"] span.active{transform:scale(1.13)}.memberNavPreviewV7033[data-motion="flip"] span.active{transform:perspective(500px) rotateY(18deg)}
+@media(prefers-reduced-motion:reduce){html[data-member-nav-motion] .navLinks a,.memberNavPreviewV7033 span{animation:none!important;transform:none!important}}
