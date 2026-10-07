@@ -1,0 +1,11 @@
+/* Personal typography override, intentionally loaded last. Only active with member selection. */
+html[data-member-font]:not([data-member-font="original"]) body,
+html[data-member-font]:not([data-member-font="original"]) body :is(h1,h2,h3,h4,h5,h6,p,span,small,strong,b,em,a,li,label,blockquote,button,.section-title,.sectionTitle,.heroLogoText,.profileBio,.memberFontPreviewV7026),
+html[data-member-font]:not([data-member-font="original"]) body :is([class*="Heading"],[class*="heading"],[class*="Title"],[class*="title"]),
+html[data-member-font]:not([data-member-font="original"]) body footer * {
+  font-family:var(--sos-member-font,Arial,sans-serif)!important;
+}
+/* A separately selected navigation face must take precedence. */
+html[data-member-font][data-member-nav-motion] body :is(.navLinks a,.navLinks a span,.memberNavPreviewV7033 span){font-family:var(--member-nav-font,var(--sos-member-font))!important}
+/* Preview follows selection even when the page has legacy typography rules. */
+html[data-member-font] .memberFontPreviewV7026{font-family:var(--sos-member-font)!important}
