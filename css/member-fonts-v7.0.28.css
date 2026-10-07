@@ -1,0 +1,29 @@
+/* Seeker Of SoundZ v7.0.28 — member-selected site typography.
+   Original mode preserves the existing Sphere Fez design. Other modes intentionally
+   override legacy Sphere Fez !important rules for the signed-in member only. */
+html[data-member-font]:not([data-member-font="original"]){--sos-member-font:Arial,sans-serif;--font-heading:var(--sos-member-font)!important;--sos-display-font:var(--sos-member-font)!important;--sos-heading-font:var(--sos-member-font)!important;--sos-card-font:var(--sos-member-font)!important;--sos-body-font:var(--sos-member-font)!important}
+html[data-member-font="system"]{--sos-member-font:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+html[data-member-font="rounded"]{--sos-member-font:"Trebuchet MS","Arial Rounded MT Bold",Arial,sans-serif}
+html[data-member-font="clean"]{--sos-member-font:Arial,"Helvetica Neue",sans-serif}
+html[data-member-font="humanist"]{--sos-member-font:"Segoe UI",Calibri,"Trebuchet MS",sans-serif}
+html[data-member-font="classic"]{--sos-member-font:Georgia,"Times New Roman",serif}
+html[data-member-font="mono"]{--sos-member-font:Consolas,"Courier New",monospace}
+html[data-member-font="retro"]{--sos-member-font:"Courier New",Courier,monospace}
+html[data-member-font="cowboy"]{--sos-member-font:Rockwell,"Roboto Slab","Courier New",Georgia,serif}
+html[data-member-font="western"]{--sos-member-font:"Copperplate Gothic Bold",Copperplate,Georgia,serif}
+html[data-member-font="arcade"]{--sos-member-font:"Lucida Console",Monaco,"Courier New",monospace}
+html[data-member-font="cinema"]{--sos-member-font:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif}
+html[data-member-font="editorial"]{--sos-member-font:"Palatino Linotype",Palatino,Book Antiqua,serif}
+html[data-member-font="tech"]{--sos-member-font:"Arial Narrow","Segoe UI",Arial,sans-serif}
+html[data-member-font]:not([data-member-font="original"]) body,
+html[data-member-font]:not([data-member-font="original"]) body :where(p,span,a,li,label,small,strong,b,em,blockquote,td,th,button,input,textarea,select,option){font-family:var(--sos-member-font)!important}
+html[data-member-font]:not([data-member-font="original"]) :is(h1,h2,h3,h4,h5,h6,.section-title,.sectionTitle,.page-title,.pageTitle,.hero-title,.heroTitle,.card-title,.cardTitle,.panel-title,.panelTitle,.modal-title,.modalTitle,.dashboard-title,.dashboardTitle,.profile-title,.profileTitle,.loaderBrandName,.heroLogoText,[class*="Heading"],[class*="heading"],[class*="Title"],[class*="title"]):not(button):not(input):not(textarea):not(select),
+html[data-member-font]:not([data-member-font="original"]) body #loader .loaderBrandName,
+html[data-member-font]:not([data-member-font="original"]) .loaderProfilePreviewV4162 .loaderPreviewBrandV4162,
+html[data-member-font]:not([data-member-font="original"]) footer :is(h1,h2,h3,h4,h5,h6,a,strong,span){font-family:var(--sos-member-font)!important}
+html[data-member-font="retro"] :is(h1,h2,h3,.heroLogoText){letter-spacing:.08em!important;text-transform:uppercase}
+html[data-member-font="cowboy"] :is(h1,h2,h3,.heroLogoText){letter-spacing:.045em!important}
+html[data-member-font="western"] :is(h1,h2,h3,.heroLogoText){letter-spacing:.07em!important;text-transform:uppercase}
+html[data-member-font="arcade"] :is(h1,h2,h3,.heroLogoText){letter-spacing:.06em!important}
+html[data-member-font="cinema"] :is(h1,h2,h3,.heroLogoText){letter-spacing:.08em!important;text-transform:uppercase}
+.memberFontPreviewV7026{font-family:var(--sos-member-preview-font,inherit)!important}

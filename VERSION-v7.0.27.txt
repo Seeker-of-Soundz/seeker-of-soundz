@@ -1,0 +1,2 @@
+Seeker Of SoundZ v7.0.27
+Live transition/loader previews, expanded loader visuals, and member display personalization.
