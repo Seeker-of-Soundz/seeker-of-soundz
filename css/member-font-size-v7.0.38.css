@@ -1,0 +1,10 @@
+/* Font scaling is opt-in: original typography is entirely unchanged at 100%. */
+html[data-member-font-size-custom] body :is(p,li,label,blockquote,small,td,th,button,input,select,textarea){font-size:calc(1rem * var(--sos-member-font-scale,1))!important}
+html[data-member-font-size-custom] body :is(h1,.heroTitle){font-size:calc(3rem * var(--sos-member-font-scale,1))!important}
+html[data-member-font-size-custom] body h2{font-size:calc(2.25rem * var(--sos-member-font-scale,1))!important}
+html[data-member-font-size-custom] body h3{font-size:calc(1.65rem * var(--sos-member-font-scale,1))!important}
+html[data-member-font-size-custom] body :is(h4,h5,h6){font-size:calc(1.25rem * var(--sos-member-font-scale,1))!important}
+.memberFontSizeV7038{margin:18px 0;padding:18px;border:1px solid rgba(180,145,255,.28);border-radius:14px;background:rgba(20,15,36,.55)}
+.memberFontSizeHeadV7038,.memberFontSizeMarksV7038,.memberFontSizeActionsV7038{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.memberFontSizeV7038 p{margin:8px 0 14px}.memberFontSizeV7038 input[type=range]{width:100%;accent-color:#b28aff;cursor:pointer}.memberFontSizeMarksV7038{font-size:12px;opacity:.78;margin:5px 0 14px}.memberFontSizeSampleV7038{padding:12px;border-radius:8px;border:1px dashed rgba(180,145,255,.4);overflow-wrap:anywhere;font-family:var(--sos-active-font,inherit)!important}.memberFontSizeActionsV7038{justify-content:flex-start;margin-top:14px}
+@media(max-width:600px){.memberFontSizeV7038{padding:12px}}
