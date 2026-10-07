@@ -1,0 +1,15 @@
+/* v7.0.22 compact grouped Admin Hub + content typography */
+.adminLayout{grid-template-columns:minmax(190px,220px) minmax(0,1fr)!important;gap:18px!important}
+.adminMenu{padding:10px!important;gap:3px!important;align-self:start!important;max-height:calc(100vh - 110px);overflow:auto;scrollbar-width:thin}
+.adminMenuGroupTitleV722{padding:13px 10px 5px;color:rgba(255,255,255,.42);font-size:.58rem;font-weight:900;letter-spacing:.17em;text-transform:uppercase;border-top:1px solid rgba(255,255,255,.055);margin-top:5px}
+.adminMenuGroupTitleV722:first-child{border-top:0;margin-top:0}
+.adminMenu .adminMenuGroupedV722{min-height:36px!important;padding:8px 10px!important;font-size:.72rem!important;text-align:left!important;border-radius:10px!important}
+.adminMenuCollabV722{margin-top:8px!important;font-size:.68rem!important}
+.contentStudioV722 .contentStudioTypeRow{grid-template-columns:minmax(145px,.65fr) minmax(300px,2fr) auto!important;align-items:start!important}
+.contentStudioEdit{min-width:0;display:grid;gap:10px}.contentStudioEdit textarea{width:100%;box-sizing:border-box}
+.contentTypeControls{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr)) auto;gap:8px;align-items:end;padding:10px;border:1px solid rgba(255,255,255,.07);border-radius:12px;background:rgba(255,255,255,.025)}
+.contentTypeControls label{display:grid;gap:5px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+.contentTypeControls select,.contentTypeControls input{width:100%;min-width:0;box-sizing:border-box}.contentTypeControls input[type=range]{accent-color:#a66cff}
+.adminTutorialCenterV722{min-width:0}.tutorialLayoutV722{display:grid;grid-template-columns:minmax(180px,250px) minmax(0,1fr);gap:14px;margin-top:18px}.tutorialNavV722{display:grid;gap:6px;align-content:start}.tutorialNavV722 button{padding:11px 12px;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:rgba(255,255,255,.025);color:#fff;text-align:left}.tutorialNavV722 button.active,.tutorialNavV722 button:hover{border-color:rgba(177,112,255,.42);background:rgba(130,70,190,.12)}.tutorialBodyV722{min-height:300px;padding:22px;border:1px solid rgba(255,255,255,.08);border-radius:18px;background:rgba(255,255,255,.025)}.tutorialBodyV722 h3{overflow-wrap:anywhere}.tutorialBodyV722 p,.tutorialStepsV722{line-height:1.7;color:rgba(255,255,255,.75)}.tutorialStepsV722{margin-top:20px;padding:15px;border-radius:14px;background:rgba(140,80,220,.08)}
+@media(max-width:1050px){.contentTypeControls{grid-template-columns:repeat(2,minmax(120px,1fr))}.contentStudioV722 .contentStudioTypeRow{grid-template-columns:1fr!important}.adminMenu{max-height:none}}
+@media(max-width:760px){.tutorialLayoutV722{grid-template-columns:1fr}.tutorialNavV722{display:flex;overflow:auto}.tutorialNavV722 button{flex:0 0 auto}.contentTypeControls{grid-template-columns:1fr}.adminLayout{grid-template-columns:1fr!important}}

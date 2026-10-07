@@ -1,0 +1,11 @@
+Seeker Of SoundZ v7.0.22 — Admin Content Typography + Tutorial Center + Collaboration Polish
+
+- Site Content Studio now edits text plus per-element font, font size, weight, and letter spacing.
+- Existing global Typography Studio remains available for site-wide roles.
+- Admin sidebar is compact and grouped by Website, Media & Galleries, Community, Commerce, Brand & Settings, and Help.
+- Gallery Manager is grouped with Site Images under Media & Galleries.
+- Added built-in Tutorial Center with section-specific Admin Hub guides.
+- Collaboration Studio right inspector receives responsive containment, corrected progress percentage alignment, improved notes field, roster wrapping, and responsive inspector layout.
+- Existing Supabase, collaboration data, navigation, access control, gallery/image systems, and site layout remain intact.
+
+Supabase: run supabase/patch-v7.0.22-content-typography.sql once before using per-element typography controls.
