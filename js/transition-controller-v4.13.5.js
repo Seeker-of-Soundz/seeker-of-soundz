@@ -2,8 +2,8 @@
 (()=>{
   'use strict';
   window.__SOS_TRANSITION_V4135__=true;
-  const MODES=new Set(['stellar','fade','aperture','warp','scan','cubes','minimal']);
-  const DURATIONS={stellar:360,fade:250,aperture:360,warp:390,scan:330,cubes:380,minimal:0};
+  const MODES=new Set(['stellar','fade','aperture','warp','scan','cubes','prism','shutter','pulse','vertical','minimal']);
+  const DURATIONS={stellar:360,fade:250,aperture:360,warp:390,scan:330,cubes:380,prism:460,shutter:440,pulse:460,vertical:460,minimal:0};
   let busy=false;
   let navTimer=0;
 
@@ -37,6 +37,10 @@
       case 'warp': return '<div class="sosFx sosFxWarp"><i></i><i></i><i></i><i></i><i></i><i></i></div>';
       case 'scan': return '<div class="sosFx sosFxScan"><i></i></div>';
       case 'cubes': return '<div class="sosFx sosFxCubes"><i></i><i></i><i></i><i></i></div>';
+      case 'prism': return '<div class="sosFx sosFxPrism"></div>';
+      case 'shutter': return '<div class="sosFx sosFxShutter"><i></i><i></i><i></i><i></i><i></i></div>';
+      case 'pulse': return '<div class="sosFx sosFxPulse"></div>';
+      case 'vertical': return '<div class="sosFx sosFxVertical"></div>';
       case 'stellar':
       default: return '<div class="sosFx sosFxStellar"><i class="ring one"></i><i class="ring two"></i><i class="core"></i></div>';
     }

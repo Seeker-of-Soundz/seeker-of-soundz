@@ -289,6 +289,7 @@
         output.textContent = 'Profile saved. Your new avatar and member information are now live.';
         output.dataset.state = 'success';
         window.SOS.toast('Your profile image and information were updated.', { title: 'Profile saved' });
+        window.dispatchEvent(new CustomEvent('sos:profile-saved',{detail:{profile:mapped}}));
       } catch (error) {
         console.error('[Seeker Profile] Save failed.', error);
         output.textContent = error?.message || 'Profile could not be saved.';
