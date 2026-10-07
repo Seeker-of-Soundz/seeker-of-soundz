@@ -1,0 +1,7 @@
+/* v7.0.30 member stability */
+body.membersPage main>.pageHero,body.membersPage main>.membersAuthSection{visibility:visible!important;opacity:1!important;pointer-events:auto!important}
+body.membersPage.membersAuthPendingV4196 main::before{display:none!important}
+#memberDashboard:not([hidden]){display:block!important;visibility:visible!important;opacity:1!important;min-height:420px}
+#authArea:not([hidden]){display:grid!important;visibility:visible!important;opacity:1!important}
+.memberModuleShellV4195{min-width:0}
+.memberModulePanelV4195:not([hidden]){display:block!important;min-width:0}
