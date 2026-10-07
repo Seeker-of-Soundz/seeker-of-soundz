@@ -1,0 +1,5 @@
+Seeker Of SoundZ v7.0.20
+- Removed public Video Effects Studio promo from Plugins/Producer Hub.
+- Upgraded FL Studio plugin discovery UI with quick filters and official resource shortcuts.
+- Preserved the existing large 500+ item producer resource directory and admin-managed resource system.
+- Reordered Admin Hub so Site Images, Site Content, Typography, Gallery, Video and Music tools are near the top.
