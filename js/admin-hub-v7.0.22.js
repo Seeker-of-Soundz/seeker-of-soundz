@@ -1,6 +1,6 @@
 (()=>{'use strict';
 const groups=[
- ['Dashboard',['overview']],['Website',['pageaccess','sitecontent','typography']],['Media & Galleries',['siteimages','gallery','videos','music']],['Community',['messages','members','forums','announcements','events','collaborations']],['Commerce',['catalog']],['Brand & Settings',['socials','performance','settings']],['Help',['tutorials']]
+ ['Dashboard',['overview']],['Website',['pageaccess','sitecontent','typography']],['Media & Galleries',['siteimages','gallery','videos','music','resourcesStudio','mediaLibrary']],['Community',['messages','contactInbox','members','forums','announcements','events','collaborations']],['Commerce',['catalog']],['Brand & Settings',['socials','performance','settings']],['Help',['tutorials']]
 ];
 const tutorials={
  overview:['Admin Overview','Use this dashboard to check site status and jump into management tools. Nothing is published until you use the save/publish action in a manager.'],

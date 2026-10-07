@@ -13,7 +13,6 @@ function addButtons(){
  const settings=menu.querySelector('[data-panel="settings"]');
  const defs=[
   ['contactInbox','Contact Inbox'],
-  ['pluginsStudio','Producer Plugins'],
   ['resourcesStudio','Producer Resources'],
   ['mediaLibrary','Media Library']
  ];
@@ -38,21 +37,21 @@ function resourceForm(item={}){
  return `<form id="professionalResourceFormV417" class="appForm adminEditor">
   <input type="hidden" name="id" value="${esc(item.id||'')}">
   <div class="formRow"><label>Name<input name="name" required value="${esc(item.name||'')}"></label><label>Developer / Vendor<input name="vendor" value="${esc(item.vendor||'')}"></label></div>
-  <div class="formRow"><label>Resource type<select name="type">${['Plugin','Sample Pack','Preset Pack','Drum Kit','MIDI Pack','Template','Project File','DAW Utility','DJ Tool'].map(x=>`<option ${item.type===x?'selected':''}>${x}</option>`).join('')}</select></label>
+  <div class="formRow"><label>Resource type<select name="type">${['Plugin','Instrument','Effect','Sample Pack','Sounds','Preset Pack','Presets','Expansion Pack','Drum Kit','MIDI Pack','Template','Project File','Free Sample','Beat Pattern','Marketplace','Learning','Tutorial','DAW Utility','DJ Tool'].map(x=>`<option ${item.type===x?'selected':''}>${x}</option>`).join('')}</select></label>
   <label>Music category<select name="category">${musicCategories.map(x=>`<option ${item.category===x?'selected':''}>${x}</option>`).join('')}</select></label></div>
   <div class="formRow"><label>Price / License<select name="price">${['Free','Donationware','Freemium','Commercial','Open Source'].map(x=>`<option ${item.price===x?'selected':''}>${x}</option>`).join('')}</select></label><label>Version<input name="version" value="${esc(item.version||'')}"></label></div>
   <label>Description<textarea name="description">${esc(item.description||'')}</textarea></label>
-  <div class="formRow"><label>Thumbnail URL<input name="thumbnail" value="${esc(item.thumbnail||item.thumbnail_url||'')}"></label><label>Website / Download URL<input name="url" value="${esc(item.url||item.website_url||'')}"></label></div>
+  <div class="formRow"><label>Thumbnail URL<input name="thumbnail" value="${esc(item.thumbnail||item.thumbnail_url||'')}"></label><label>Website / Download URL<input name="url" value="${esc(item.url||item.website_url||'')}"></label></div><div class="formRow"><label>DAW / Ecosystem<input name="ecosystem" value="${esc(item.ecosystem||'FL Studio / All DAWs')}" placeholder="FL Studio, VST3, All DAWs"></label><label>Tutorial / Video URL<input name="tutorial" value="${esc(item.tutorial||item.tutorial_url||item.youtubeUrl||'')}" placeholder="Official tutorial or YouTube URL"></label></div>
   <div class="formRow"><label>Formats<input name="formats" value="${esc((item.formats||[]).join(', '))}" placeholder="VST3, AU, AAX"></label><label>Tags<input name="tags" value="${esc((item.tags||[]).join(', '))}" placeholder="free, synth, edm"></label></div>
   <div class="catalogStatusGrid"><label class="catalogStatusToggle"><input type="checkbox" name="featured" ${item.featured?'checked':''}><span><i>✦</i><strong>Featured</strong><small>Highlight this for producers.</small></span></label><label class="catalogStatusToggle"><input type="checkbox" name="published" ${item.is_published!==false?'checked':''}><span><i>✓</i><strong>Published</strong><small>Show this in the public Plugin Library.</small></span></label></div>
   <div class="adminItemActions"><button class="primaryButton" type="submit">${item.id?'Save Changes':'Add Resource'}</button><button class="secondaryButton" type="button" data-new-pro-resource>Clear Editor</button></div>
  </form>`;
 }
-function renderResources(editId='',pluginsOnly=false){
- const items=localResources().filter(x=>pluginsOnly?String(x.type).toLowerCase()==='plugin':String(x.type).toLowerCase()!=='plugin');
+function renderResources(editId=''){
+ const items=localResources();
  const edit=localResources().find(x=>x.id===editId)||{};
- panel.innerHTML=`<div class="adminSectionHead"><div><p class="sectionEyebrow">Music Production CMS</p><h2>${pluginsOnly?'Producer Plugin Library':'Producer Resources'}</h2></div><span class="statusPill">${items.length} items</span></div>
- <p class="adminLead">${pluginsOnly?'Strictly music-production plugins for EDM producers, DJs, mixing, mastering, vocals, MIDI and live performance.':'Edit the existing sample packs, presets, drum kits, templates, project files and producer downloads already on the site.'}</p>
+ panel.innerHTML=`<div class="adminSectionHead"><div><p class="sectionEyebrow">Music Production CMS</p><h2>Producer Resources</h2></div><span class="statusPill">${items.length} items</span></div>
+ <p class="adminLead">One unified production library for plugins, synths, effects, sample packs, presets, drum kits, MIDI, templates, project files, free downloads, marketplaces and learning/tutorial resources. Changes here feed the public Producer Hub.</p><div class="adminItemActions"><button class="secondaryButton" type="button" data-sync-pro-library>Sync Current Library to Supabase</button><span class="statusPill">${items.length} total resources</span></div>
  ${resourceForm(edit)}<div class="professionalResourceGridV417">${items.map(resourceCard).join('')||'<div class="emptyState">No resources in this section yet.</div>'}</div>`;
 }
 async function renderInbox(){
@@ -84,21 +83,20 @@ function enhanceMerch(){
 menu.addEventListener('click',e=>{
  const b=e.target.closest('[data-panel]');if(!b)return;
  active=b.dataset.panel;
- if(['contactInbox','pluginsStudio','resourcesStudio','mediaLibrary'].includes(active)){
+ if(['contactInbox','resourcesStudio','mediaLibrary'].includes(active)){
   e.preventDefault();e.stopImmediatePropagation();menu.querySelectorAll('[data-panel]').forEach(x=>x.classList.toggle('active',x===b));
   if(active==='contactInbox')renderInbox();
-  if(active==='pluginsStudio')renderResources('',true);
-  if(active==='resourcesStudio')renderResources('',false);
+  if(active==='resourcesStudio')renderResources();
   if(active==='mediaLibrary')renderMedia();
  }else if(active==='catalog')setTimeout(enhanceMerch,180);
 },true);
 panel.addEventListener('submit',async e=>{
  if(e.target.id==='professionalResourceFormV417'){
   e.preventDefault();const f=new FormData(e.target),items=localResources(),id=f.get('id')||crypto.randomUUID(),old=items.find(x=>x.id===id);
-  const record={...old,id,name:f.get('name').trim(),vendor:f.get('vendor').trim(),type:f.get('type'),category:f.get('category'),price:f.get('price'),version:f.get('version').trim(),description:f.get('description').trim(),thumbnail:f.get('thumbnail').trim(),url:f.get('url').trim(),formats:String(f.get('formats')).split(',').map(x=>x.trim()).filter(Boolean),tags:String(f.get('tags')).split(',').map(x=>x.trim()).filter(Boolean),featured:f.has('featured'),is_published:f.has('published'),updated:new Date().toISOString()};
+  const record={...old,id,name:f.get('name').trim(),vendor:f.get('vendor').trim(),type:f.get('type'),category:f.get('category'),ecosystem:f.get('ecosystem').trim()||'FL Studio / All DAWs',price:f.get('price'),version:f.get('version').trim(),tutorial:f.get('tutorial').trim(),description:f.get('description').trim(),thumbnail:f.get('thumbnail').trim(),url:f.get('url').trim(),formats:String(f.get('formats')).split(',').map(x=>x.trim()).filter(Boolean),tags:String(f.get('tags')).split(',').map(x=>x.trim()).filter(Boolean),featured:f.has('featured'),is_published:f.has('published'),updated:new Date().toISOString()};
   const index=items.findIndex(x=>x.id===id);if(index>=0)items[index]=record;else items.push(record);writeResources(items);
-  await client.from('producer_resources').upsert({id,name:record.name,vendor:record.vendor,resource_type:record.type,category:record.category,ecosystem:record.ecosystem||'Universal',price_type:record.price,version:record.version,formats:record.formats,tags:record.tags,description:record.description,thumbnail_url:record.thumbnail||null,website_url:record.url||null,featured:record.featured,is_published:record.is_published,updated_at:new Date().toISOString()});
-  toast('Producer resource saved.');renderResources('',active==='pluginsStudio');
+  await client.from('producer_resources').upsert({id,name:record.name,vendor:record.vendor,resource_type:record.type,category:record.category,ecosystem:record.ecosystem||'Universal',price_type:record.price,version:record.version,formats:record.formats,tags:record.tags,description:record.description,thumbnail_url:record.thumbnail||null,website_url:record.url||null,tutorial_url:record.tutorial||null,featured:record.featured,is_published:record.is_published,updated_at:new Date().toISOString()});
+  toast('Producer resource saved and synced.');renderResources();
  }
  if(e.target.id==='mediaLibraryFormV417'){
   e.preventDefault();const f=new FormData(e.target),url=f.get('url').trim();
@@ -107,9 +105,16 @@ panel.addEventListener('submit',async e=>{
  }
 });
 panel.addEventListener('click',async e=>{
- let b=e.target.closest('[data-edit-pro-resource]');if(b)return renderResources(b.dataset.editProResource,active==='pluginsStudio');
- b=e.target.closest('[data-new-pro-resource]');if(b)return renderResources('',active==='pluginsStudio');
- b=e.target.closest('[data-delete-pro-resource]');if(b){const items=localResources().filter(x=>x.id!==b.dataset.deleteProResource);writeResources(items);await client.from('producer_resources').delete().eq('id',b.dataset.deleteProResource);return renderResources('',active==='pluginsStudio')}
+ let b=e.target.closest('[data-edit-pro-resource]');if(b)return renderResources(b.dataset.editProResource);
+ b=e.target.closest('[data-new-pro-resource]');if(b)return renderResources();
+ b=e.target.closest('[data-delete-pro-resource]');if(b){const items=localResources().filter(x=>x.id!==b.dataset.deleteProResource);writeResources(items);await client.from('producer_resources').delete().eq('id',b.dataset.deleteProResource);return renderResources()}
+ b=e.target.closest('[data-sync-pro-library]');if(b){
+  const source=localResources();if(!source.length)return toast('No producer resources found to sync.','Producer Resources');
+  b.disabled=true;b.textContent='Syncing…';
+  const rows=source.map(record=>({id:String(record.id||crypto.randomUUID()),name:record.name||'Untitled Resource',vendor:record.vendor||'',resource_type:record.type||'Plugin',category:record.category||'Utility',ecosystem:record.ecosystem||'FL Studio / All DAWs',price_type:record.price||'Free',version:record.version||'',formats:Array.isArray(record.formats)?record.formats:[],tags:Array.isArray(record.tags)?record.tags:[],description:record.description||'',thumbnail_url:record.thumbnail||record.thumbnail_url||null,website_url:record.url||record.website_url||null,tutorial_url:record.tutorial||record.tutorial_url||record.youtubeUrl||null,featured:!!record.featured,is_published:record.is_published!==false,updated_at:new Date().toISOString()}));
+  let failed='';for(let i=0;i<rows.length;i+=75){const q=await client.from('producer_resources').upsert(rows.slice(i,i+75));if(q.error){failed=q.error.message;break}}
+  b.disabled=false;b.textContent='Sync Current Library to Supabase';if(failed)return toast(failed,'Producer Resources');toast(`${rows.length} producer resources synced to Supabase.`,'Producer Resources');return renderResources();
+ }
  b=e.target.closest('[data-save-contact]');if(b){const id=b.dataset.saveContact,q=await client.rpc('admin_update_contact_message',{p_id:id,p_status:panel.querySelector(`[data-message-status="${id}"]`).value,p_priority:panel.querySelector(`[data-message-priority="${id}"]`).value,p_admin_note:panel.querySelector(`[data-message-note="${id}"]`).value});if(q.error)return toast(q.error.message,'Inbox');toast('Message updated.','Inbox');return renderInbox()}
  b=e.target.closest('[data-review-collab]');if(b){const q=await client.rpc('admin_review_collaboration_request',{p_id:b.dataset.reviewCollab,p_status:b.dataset.status});if(q.error)return toast(q.error.message,'Collaboration');toast(`Request ${b.dataset.status}.`,'Collaboration');return renderInbox()}
  b=e.target.closest('[data-copy-media]');if(b){await navigator.clipboard.writeText(b.dataset.copyMedia);return toast('Media URL copied.','Media Library')}
