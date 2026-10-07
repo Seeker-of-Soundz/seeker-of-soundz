@@ -1,0 +1,5 @@
+Seeker Of SoundZ v7.0.29 — Member Layout Sync Fix
+- Prevents the Members page from remaining stuck on “Synchronizing member frequency…” when profile/auth bridge synchronization is delayed.
+- Restores the signed-in v7 member dashboard immediately from the existing local session while Supabase refreshes in the background.
+- Adds a bounded 3.5 second bridge refresh fallback and preserves all v7.0.28 font/profile customization.
+- No database migration required.

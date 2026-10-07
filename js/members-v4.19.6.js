@@ -228,7 +228,25 @@ openRecovery().then(recoveryOpen=>{
  if(recoveryOpen)return;
  if(!client){show(null);return}
  client.auth.getSession()
-  .then(({data})=>window.SOS_AUTH_BRIDGE?.sync(data.session).then(show))
-  .catch(error=>{console.error(error);show(null)});
+  .then(async ({data})=>{
+    const session=data?.session||null;
+    // v7.0.29: never let the member shell remain stuck behind the auth-sync overlay.
+    // Render the locally-known mapped session immediately when available, then refresh it
+    // from the bridge with a bounded wait. This preserves the new member layout even if
+    // profile/font/achievement synchronization is slow or temporarily unavailable.
+    const local=window.SOS?.getSession?.();
+    if(local?.id) show(local);
+    if(!session){show(null);return;}
+    try{
+      const bridge=window.SOS_AUTH_BRIDGE?.sync;
+      if(typeof bridge!=="function"){show(local||session);return;}
+      const mapped=await Promise.race([
+        bridge(session),
+        new Promise(resolve=>setTimeout(()=>resolve(local||session),3500))
+      ]);
+      show(mapped||local||session);
+    }catch(error){console.error(error);show(local||session);}
+  })
+  .catch(error=>{console.error(error);show(window.SOS?.getSession?.()||null)});
 }).catch(error=>{console.error(error);show(null)});
 })();

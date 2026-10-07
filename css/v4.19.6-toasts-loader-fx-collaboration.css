@@ -366,3 +366,8 @@ html.sos-loader-center-none #loader .loaderCenterEffectV4196,
     margin:0 8px 8px!important;
   }
 }
+
+/* v7.0.29 — member shell sync resilience */
+body.membersPage.membersSignedInV4193 #memberDashboard{display:block;}
+body.membersPage.membersSignedInV4193.membersAuthPendingV4196 main::before{display:none!important;}
+body.membersPage.membersSignedInV4193.membersAuthPendingV4196 main>.membersAuthSection{visibility:visible!important;opacity:1!important;pointer-events:auto!important;}
