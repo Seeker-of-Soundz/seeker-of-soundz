@@ -1,0 +1,9 @@
+Seeker Of SoundZ v7.0.21
+- Added Admin Hub Page Access & Visibility manager near the top of Admin navigation.
+- Access modes: Public, Members, VIP/Premium, Collaboration Approved, Admin Only, Hidden/Admin Only.
+- Restricted pages automatically disappear from main navigation for visitors without access.
+- Direct URL access is gated as well; admins/owners retain access.
+- Save actions show a toast notification and status confirmation.
+- Added FL Studio Learning Center to Producer Hub with searchable real official tutorials/manuals and trusted plugin-learning resources.
+- Preserved existing plugin catalog, filters, Supabase, galleries, image/content editors, Producer Hub systems, layouts and styling.
+- Run supabase/patch-v7.0.21-page-access-control.sql once before using Page Access controls.
