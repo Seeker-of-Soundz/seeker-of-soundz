@@ -1,0 +1,96 @@
+/* Seeker Of SoundZ v7.0.32 — focused signed-out member access layout fix.
+   Only changes the login/register presentation. Signed-in dashboard remains untouched. */
+body.membersPage:not(.membersSignedInV4193) main{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:0!important;
+}
+body.membersPage:not(.membersSignedInV4193) main>.pageHero{
+  display:none!important;
+}
+body.membersPage:not(.membersSignedInV4193) main>.membersAuthSection{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:100%!important;
+  min-height:calc(100svh - 118px)!important;
+  padding:28px 20px 34px!important;
+  margin:0!important;
+}
+body.membersPage:not(.membersSignedInV4193) .membersAuthSection>.container{
+  width:100%!important;
+  max-width:660px!important;
+  margin:0 auto!important;
+  padding:0!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea.authShell{
+  display:block!important;
+  width:100%!important;
+  max-width:620px!important;
+  margin:0 auto!important;
+  position:relative!important;
+  inset:auto!important;
+  transform:none!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea>.authCard:first-child{
+  width:100%!important;
+  max-height:none!important;
+  overflow:visible!important;
+  padding:clamp(20px,2.7vw,34px)!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea>aside.authCard{
+  display:none!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .authModeHeader{
+  margin-bottom:18px!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .authModeHeader h2{
+  font-size:clamp(1.75rem,3vw,2.7rem)!important;
+  line-height:1.08!important;
+  margin-bottom:8px!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .authModeHeader p{
+  line-height:1.45!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .tabRow{
+  margin-bottom:16px!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .appForm{
+  gap:12px!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .authFormIntro{
+  padding:11px 14px!important;
+  line-height:1.4!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .appForm input,
+body.membersPage:not(.membersSignedInV4193) #authArea .appForm select{
+  padding-top:12px!important;
+  padding-bottom:12px!important;
+}
+body.membersPage:not(.membersSignedInV4193) #authArea .appForm .primaryButton{
+  min-height:50px!important;
+}
+@media(max-height:760px) and (min-width:621px){
+  body.membersPage:not(.membersSignedInV4193) main>.membersAuthSection{
+    align-items:flex-start!important;
+    padding-top:18px!important;
+  }
+  body.membersPage:not(.membersSignedInV4193) #authArea>.authCard:first-child{
+    padding:18px 24px!important;
+  }
+  body.membersPage:not(.membersSignedInV4193) #authArea .authModeHeader .sectionEyebrow,
+  body.membersPage:not(.membersSignedInV4193) #authArea .registerOnlyNotice{
+    margin-bottom:4px!important;
+  }
+}
+@media(max-width:620px){
+  body.membersPage:not(.membersSignedInV4193) main>.membersAuthSection{
+    min-height:calc(100svh - 82px)!important;
+    padding:18px 12px 28px!important;
+  }
+  body.membersPage:not(.membersSignedInV4193) #authArea>.authCard:first-child{
+    padding:18px 14px!important;
+    border-radius:20px!important;
+  }
+}
