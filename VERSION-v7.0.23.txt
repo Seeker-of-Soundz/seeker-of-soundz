@@ -1,0 +1,7 @@
+Seeker Of SoundZ v7.0.23
+- Tutorial Center upgraded to multi-slide, section-specific walkthroughs with progress, previous/next controls, and deeper safe workflows.
+- Admin Settings upgraded to secure Stripe + PayPal configuration UI.
+- Supabase Edge Function checkout bridge included; secret keys stay server-side.
+- Store cart now uses secure checkout when configured.
+- Sidebar startup flash/jump reduced by keeping the menu hidden until grouped navigation is ready and removing repeated interval-based reordering.
+- Existing site systems and layout preserved.
