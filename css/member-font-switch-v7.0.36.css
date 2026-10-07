@@ -1,0 +1,8 @@
+/* Final member-specific typography layer: loaded after all legacy styles. */
+html[data-member-font]:not([data-member-font="original"]) {--sos-member-font:var(--sos-active-font)!important;--font-heading:var(--sos-active-font)!important;--sos-display-font:var(--sos-active-font)!important}
+html[data-member-font]:not([data-member-font="original"]) body,
+html[data-member-font]:not([data-member-font="original"]) body :is(h1,h2,h3,h4,h5,h6,p,span,a,li,small,strong,b,em,label,blockquote,button,input,textarea,select,td,th,[class*="title"],[class*="Title"],[class*="heading"],[class*="Heading"]){font-family:var(--sos-active-font)!important}
+html[data-member-font]:not([data-member-font="original"]) body .navLinks :is(a,a span),
+html[data-member-font]:not([data-member-font="original"]) body nav :is(a,a span),
+html[data-member-font]:not([data-member-font="original"]) body .memberNavPreviewV7033 span{font-family:var(--sos-active-nav-font,var(--sos-active-font))!important}
+html[data-member-font]:not([data-member-font="original"]) .memberFontPreviewV7026{font-family:var(--sos-active-font)!important}

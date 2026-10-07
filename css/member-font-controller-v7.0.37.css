@@ -1,0 +1,6 @@
+/* v7.0.37 authoritative per-member font layer; original site untouched when no selection. */
+html[data-member-font]:not([data-member-font="original"]) { --font-heading:var(--sos-active-font)!important; --font-body:var(--sos-active-font)!important; --sos-display-font:var(--sos-active-font)!important; }
+html[data-member-font]:not([data-member-font="original"]) body,
+html[data-member-font]:not([data-member-font="original"]) body :is(h1,h2,h3,h4,h5,h6,p,span,a,li,small,strong,b,em,label,blockquote,button,input,textarea,select,td,th,div,[class*="title"],[class*="Title"],[class*="heading"],[class*="Heading"]) {font-family:var(--sos-active-font)!important}
+html[data-member-font]:not([data-member-font="original"]) body :is(nav,.navLinks,.siteNav,.navbar,.memberNavPreviewV7033) :is(a,span,button){font-family:var(--sos-active-nav-font,var(--sos-active-font))!important}
+html[data-member-font]:not([data-member-font="original"]) body [data-member-font-preview]{font-family:var(--sos-active-font)!important}
