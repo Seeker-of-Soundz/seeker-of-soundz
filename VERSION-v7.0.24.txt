@@ -1,0 +1,2 @@
+Seeker Of SoundZ v7.0.24
+Admin hover stability + native cursor normalization

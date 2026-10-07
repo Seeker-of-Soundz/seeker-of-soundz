@@ -67,3 +67,45 @@ html,body{
 background: linear-gradient(180deg,#200434 0%,#17032a 20%,#120220 45%,#090114 75%,#000000 100%) !important;
 }
 .star{filter:drop-shadow(0 0 4px rgba(255,255,255,.6));animation-duration:3s!important;}
+
+/* v7.0.24 — native cursor normalization when the custom cursor switch is OFF.
+   Arrow on normal content, hand on controls, I-beam only inside editable text fields. */
+html.nativeCursor,
+html.nativeCursor body,
+html.nativeCursor body *{cursor:default!important}
+html.nativeCursor a,
+html.nativeCursor button,
+html.nativeCursor [role="button"],
+html.nativeCursor summary,
+html.nativeCursor select,
+html.nativeCursor label[for],
+html.nativeCursor input[type="button"],
+html.nativeCursor input[type="submit"],
+html.nativeCursor input[type="reset"],
+html.nativeCursor input[type="checkbox"],
+html.nativeCursor input[type="radio"],
+html.nativeCursor input[type="file"],
+html.nativeCursor .cursorSwitch,
+html.nativeCursor .smallAction,
+html.nativeCursor .primaryButton,
+html.nativeCursor .secondaryButton,
+html.nativeCursor .dangerAction{cursor:pointer!important}
+html.nativeCursor input:not([type]),
+html.nativeCursor input[type="text"],
+html.nativeCursor input[type="search"],
+html.nativeCursor input[type="email"],
+html.nativeCursor input[type="password"],
+html.nativeCursor input[type="url"],
+html.nativeCursor input[type="tel"],
+html.nativeCursor input[type="number"],
+html.nativeCursor textarea,
+html.nativeCursor [contenteditable="true"]{cursor:text!important}
+html.nativeCursor input[type="range"]{cursor:ew-resize!important}
+html.nativeCursor button:disabled,
+html.nativeCursor input:disabled,
+html.nativeCursor select:disabled{cursor:not-allowed!important}
+html.nativeCursor #cursor,
+html.nativeCursor #cursorDot,
+html.nativeCursor #cursorRing,
+html.nativeCursor .customCursor,
+html.nativeCursor [data-custom-cursor]{display:none!important;visibility:hidden!important;opacity:0!important}

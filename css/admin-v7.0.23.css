@@ -3,3 +3,40 @@
 .adminTutorialCenterV723,.paymentSettingsV723{min-width:0}.tutorialLayoutV723{display:grid;grid-template-columns:minmax(190px,250px) minmax(0,1fr);gap:16px;margin-top:18px}.tutorialNavV723{display:grid;gap:6px;align-content:start;max-height:560px;overflow:auto}.tutorialNavV723 button{padding:11px 12px;border:1px solid rgba(255,255,255,.08);border-radius:11px;background:rgba(255,255,255,.025);color:#fff;text-align:left}.tutorialNavV723 button.active,.tutorialNavV723 button:hover{background:rgba(139,77,209,.16);border-color:rgba(180,120,255,.42)}.tutorialDeckV723{border:1px solid rgba(255,255,255,.09);border-radius:20px;background:linear-gradient(145deg,rgba(36,19,44,.72),rgba(8,7,12,.84));overflow:hidden}.tutorialProgressV723{height:4px;background:rgba(255,255,255,.07)}.tutorialProgressV723 i{display:block;height:100%;background:linear-gradient(90deg,#8f54e8,#fff);transition:width .25s ease}.tutorialSlideV723{min-height:330px;padding:clamp(22px,4vw,44px);display:flex;flex-direction:column;justify-content:center}.tutorialSlideV723 h3{font-size:clamp(1.5rem,3vw,2.8rem);margin:.3em 0;overflow-wrap:anywhere}.tutorialSlideV723>p:not(.sectionEyebrow){font-size:1rem;line-height:1.8;color:rgba(255,255,255,.76);max-width:760px}.tutorialCalloutV723{margin-top:26px;padding:14px 16px;border:1px solid rgba(171,109,255,.2);border-radius:14px;background:rgba(135,70,200,.08);color:rgba(255,255,255,.7)}.tutorialControlsV723{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-top:1px solid rgba(255,255,255,.07)}.tutorialControlsV723 button:disabled{opacity:.35;pointer-events:none}.tutorialDotsV723{display:flex;gap:7px}.tutorialDotsV723 button{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.2)}.tutorialDotsV723 button.active{background:#fff;box-shadow:0 0 12px rgba(173,110,255,.8)}
 .paymentSecurityV723{display:flex;gap:12px;align-items:flex-start;margin:18px 0;padding:15px 17px;border:1px solid rgba(129,255,191,.15);border-radius:14px;background:rgba(50,170,110,.06)}.paymentSecurityV723 strong{white-space:nowrap}.paymentSecurityV723 span{color:rgba(255,255,255,.67);line-height:1.55}.paymentGridV723{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.paymentProviderV723,.paymentCheckoutV723,.paymentSetupV723{padding:20px;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:rgba(255,255,255,.025);min-width:0}.paymentProviderHeadV723{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;margin-bottom:18px}.providerMarkV723{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#6d3dcc,#2c1745);font-weight:900}.paymentProviderHeadV723 h3,.paymentCheckoutV723 h3,.paymentSetupV723 h3{margin:0}.paymentProviderHeadV723 p{margin:3px 0 0;color:rgba(255,255,255,.58);font-size:.8rem}.providerSwitchV723{display:flex!important;gap:7px!important;align-items:center!important}.paymentProviderV723>label{display:grid;gap:7px}.paymentProviderV723 input,.paymentCheckoutV723 select{width:100%;box-sizing:border-box}.paymentProviderV723 small{display:block;margin-top:10px;color:rgba(255,255,255,.5)}.paymentCheckoutV723{grid-column:1/-1}.paymentActionsV723{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.paymentSetupV723{margin-top:14px}.paymentSetupV723 p{line-height:1.7;color:rgba(255,255,255,.68)}.adminToastV723{position:fixed;right:24px;bottom:24px;z-index:99999;padding:13px 16px;border:1px solid rgba(255,255,255,.15);border-radius:12px;background:#17121d;color:#fff;box-shadow:0 14px 40px rgba(0,0,0,.4)}
 @media(max-width:850px){.tutorialLayoutV723{grid-template-columns:1fr}.tutorialNavV723{display:flex;overflow:auto}.tutorialNavV723 button{flex:0 0 auto}.paymentGridV723{grid-template-columns:1fr}.paymentCheckoutV723{grid-column:auto}.paymentSecurityV723{display:grid}.paymentSecurityV723 strong{white-space:normal}}
+
+/* v7.0.24 — stable Admin Hub hover/selection treatment.
+   Keep the left accent steady and highlight the whole button instead of shifting it. */
+.adminPage .adminMenu button,
+.adminPage .adminMenu a{
+  transform:none!important;
+  will-change:auto!important;
+}
+.adminPage .adminMenu button:hover,
+.adminPage .adminMenu a:hover,
+.adminPage .adminMenu button:focus-visible,
+.adminPage .adminMenu a:focus-visible{
+  transform:none!important;
+  border-color:rgba(211,174,255,.58)!important;
+  background:linear-gradient(90deg,rgba(139,67,205,.24),rgba(105,55,157,.12),rgba(255,255,255,.035))!important;
+  color:#fff!important;
+  box-shadow:inset 0 0 0 1px rgba(218,184,255,.08),0 0 20px rgba(143,72,210,.13)!important;
+}
+.adminPage .adminMenu button::before,
+.adminPage .adminMenu a::before{
+  transition:none!important;
+  transform:none!important;
+}
+.adminPage .adminMenu button:hover::before,
+.adminPage .adminMenu a:hover::before,
+.adminPage .adminMenu button:focus-visible::before,
+.adminPage .adminMenu a:focus-visible::before,
+.adminPage .adminMenu button.active::before,
+.adminPage .adminMenu a.active::before{
+  opacity:1!important;
+  transform:none!important;
+  box-shadow:0 0 10px rgba(196,137,255,.5)!important;
+}
+.adminPage .adminMenu button.active{
+  border-color:rgba(215,177,255,.62)!important;
+  background:linear-gradient(90deg,rgba(139,67,205,.31),rgba(108,57,160,.15),rgba(255,255,255,.04))!important;
+}
