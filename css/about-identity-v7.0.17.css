@@ -1,0 +1,5 @@
+/* v7.0.17 About identity card typography safety */
+.identityGrid{align-items:stretch}
+.identityCard{min-width:0}
+.identityCard h3{font-size:clamp(1.15rem,2.05vw,1.72rem)!important;line-height:1.12!important;letter-spacing:clamp(.08rem,.28vw,.24rem)!important;max-width:100%;overflow-wrap:normal!important;word-break:normal!important;white-space:normal!important}
+@media(max-width:900px){.identityCard h3{font-size:clamp(1.1rem,4vw,1.5rem)!important;letter-spacing:.1rem!important}}
