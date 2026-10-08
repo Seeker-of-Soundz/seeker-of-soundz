@@ -1,0 +1,1 @@
+v7.0.43 updates: Detailed admin tutorial step checklists and glowing navigation dots; native draggable 50%-250% website/navigation font-size sliders, instant preview, Supabase Auth user_metadata save and load. Requires logged-in Supabase member; no SQL migration. Based on uploaded v7.0.41. Browser end-to-end testing not performed.
