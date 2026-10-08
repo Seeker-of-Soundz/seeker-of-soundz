@@ -1,0 +1,16 @@
+/* Only typography is scaled; containers retain their original widths. */
+html[data-sos-text-scaled] body :is(p,li,blockquote,.sectionLead,.cardDescription){font-size:clamp(9px,calc(1rem * var(--sos-text-scale,1)),40px)!important;overflow-wrap:anywhere;min-width:0}
+html[data-sos-text-scaled] body :is(h1,.heroTitle){font-size:clamp(1.2rem,calc(3rem * var(--sos-text-scale,1)),7.5rem)!important;overflow-wrap:anywhere}
+html[data-sos-text-scaled] body h2{font-size:clamp(1rem,calc(2.25rem * var(--sos-text-scale,1)),5.6rem)!important;overflow-wrap:anywhere}
+html[data-sos-text-scaled] body h3{font-size:clamp(.9rem,calc(1.65rem * var(--sos-text-scale,1)),4.1rem)!important;overflow-wrap:anywhere}
+html[data-sos-nav-scaled] body :is(header nav a,.siteNav a,.navLinks a,.nav-links a,.navbar a){font-size:clamp(8px,calc(.88rem * var(--sos-nav-scale,1)),30px)!important;min-width:0;max-width:100%;overflow-wrap:anywhere;white-space:normal;line-height:1.2;letter-spacing:normal!important;text-align:center}
+body :is(header nav,.siteNav,.navLinks,.nav-links,.navbar){min-width:0;max-width:100%}
+body :is(header nav a,.siteNav a,.navLinks a,.nav-links a,.navbar a){box-sizing:border-box;min-width:0}
+#sos42-size-panel{margin:18px 0;padding:18px;border:1px solid rgba(180,145,255,.35);border-radius:14px;background:rgba(20,15,36,.65);max-width:100%;box-sizing:border-box}
+#sos42-size-panel label{display:flex;justify-content:space-between;gap:12px;margin:18px 0 8px;font-weight:600}
+#sos42-size-panel input[type=range]{display:block;width:100%;height:28px;cursor:grab;touch-action:pan-y;accent-color:#b28aff;appearance:auto}
+#sos42-size-panel input[type=range]:active{cursor:grabbing}
+#sos42-size-panel .sos42-marks{display:flex;justify-content:space-between;gap:8px;font-size:11px;opacity:.75}
+#sos42-size-panel .memberFontSizeActionsV7039{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+#sos42-status{margin-top:12px;min-height:1.3em;font-size:.85rem;overflow-wrap:anywhere}
+@media(max-width:600px){#sos42-size-panel{padding:12px}}
