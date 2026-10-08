@@ -34,15 +34,16 @@ function makeAccess(s){
  return rows.map(([icon,title,copy,on,status,cls])=>`<div class="accessLevelV46 ${cls}"><span class="accessDotV46">${icon}</span><div><strong>${esc(title)}</strong><small>${esc(copy)}</small></div><em>${esc(status)}</em></div>`).join("");
 }
 function makeActions(s){
+ const admin=String(s.role||'').toLowerCase()==='admin'||/administrator|admin/i.test(String(s.customRole||s.roleLabel||''));
  const actions=[
-  ["💬","Forums","Read and join discussions","forums.html"],
-  ["🎵","Music Vault","Browse releases and downloads","music.html#musicStore"],
-  ["🛒","Saved Cart","Review saved merchandise","#open-cart-v46"],
-  ["⚙","Profile Settings","Update your public profile","#profileStudio"]
+ ['💬','Community Forums','Join discussions and follow topics','forums.html'],
+ ['🎵','Music Library','Explore music and releases','music.html'],
+ ['🎬','Video Gallery','Watch videos and creative projects','videos.html'],
+ ['📅','Upcoming Events','See events and upcoming sessions','events.html']
  ];
- if(String(s.role||"").toLowerCase()==="admin"||s.collaborationAccess)actions.unshift(["🤝","Collaboration Studio","Open projects and shared files","collaboration.html"]);
- if(String(s.role||"").toLowerCase()==="admin")actions.unshift(["🛡","Admin Dashboard","Manage the full website","admin.html"]);
- return actions.map(([icon,title,copy,url])=>`<a class="quickActionV46" href="${url}"><span>${icon}</span><div><strong>${esc(title)}</strong><small>${esc(copy)}</small></div></a>`).join("");
+ if(admin||s.collaborationAccess)actions.unshift(['🤝','Collaboration Studio','Projects and shared creative work','collaboration.html']);
+ if(admin)actions.unshift(['🛡','Admin Dashboard','Manage your website and community','admin.html']);
+ return actions.map(([icon,title,copy,url])=>`<a class="quickActionV46" href="${url}"><span aria-hidden="true">${icon}</span><div><strong>${esc(title)}</strong><small>${esc(copy)}</small></div><span class="quickArrowV46" aria-hidden="true">↗</span></a>`).join('');
 }
 function makeProjects(projects){
  if(!projects.length)return '<p class="emptyState">Your active collaboration projects will appear here after you are added to one.</p>';
@@ -65,7 +66,7 @@ function render(){
  preview.after(stats);
  const command=document.createElement("section");command.className="profileCommandGridV46 dashboardV46";command.innerHTML=`
   <article class="profilePanelV46"><div class="profilePanelHeadV46"><div><p class="sectionEyebrow">Permissions</p><h3>Access Levels</h3></div><span class="profilePanelIconV46">✦</span></div><div class="accessLevelsV46">${makeAccess(s)}</div></article>
-  <article class="profilePanelV46"><div class="profilePanelHeadV46"><div><p class="sectionEyebrow">Command center</p><h3>Quick Actions</h3></div><span class="profilePanelIconV46">⚡</span></div><div class="quickActionsV46">${makeActions(s)}</div></article>`;
+  <article class="profilePanelV46"><div class="profilePanelHeadV46"><div><p class="sectionEyebrow">Your creative workspace</p><h3>Command Center</h3><p class="commandIntroV46">Explore the community and your creative tools.</p></div><span class="profilePanelIconV46">⚡</span></div><div class="quickActionsV46">${makeActions(s)}</div></article>`;
  stats.after(command);
  const lower=document.createElement("section");lower.className="profileLowerGridV46 dashboardV46";
  const activity=activities.length?activities.map(i=>`<div class="activityItemV46"><span>${i.icon}</span><div><strong>${esc(i.title)}</strong><small>${esc(i.meta)}</small></div><time>${fmtDate(i.date)}</time></div>`).join(""):'<p class="emptyState">New forum replies, achievements and project updates will appear here.</p>';
@@ -74,8 +75,6 @@ function render(){
  command.after(lower);
  const projects=document.createElement("section");projects.className="profilePanelV46 currentProjectsV46 dashboardV46";projects.innerHTML=`<div class="profilePanelHeadV46"><div><p class="sectionEyebrow">Production</p><h3>Current Projects</h3></div>${st.myProjects.length?'<a class="secondaryButton" href="collaboration.html">View all</a>':''}</div><div class="projectCardsV46">${makeProjects(st.myProjects)}</div>`;
  lower.after(projects);
- dash.querySelector('[href="#open-cart-v46"]')?.addEventListener("click",e=>{e.preventDefault();document.getElementById("cartDrawer")?.classList.add("open")});
- dash.querySelector('[href="#profileStudio"]')?.addEventListener("click",e=>{e.preventDefault();window.SOS44OpenProfile?.() || document.getElementById("profileStudio")?.scrollIntoView({behavior:"smooth",block:"start"})});
 }
 window.addEventListener("DOMContentLoaded",()=>setTimeout(render,80));
 window.addEventListener("storage",render);

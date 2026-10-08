@@ -1,0 +1,16 @@
+/* v7.0.46: command center only, no changes to surrounding layout */
+.memberDashboard .profileCommandGridV46>.profilePanelV46{min-width:0}
+.memberDashboard .commandIntroV46{font-size:.8rem!important;line-height:1.55;color:#bba9ce;margin:10px 0 0!important;max-width:42ch}
+.memberDashboard .quickActionsV46{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.memberDashboard .quickActionV46{min-width:0;min-height:92px;position:relative;overflow:hidden;border:1px solid rgba(191,150,242,.16);background:linear-gradient(125deg,rgba(140,82,203,.105),rgba(255,255,255,.018));border-radius:16px;transition:background .2s,border-color .2s,transform .2s}
+.memberDashboard .quickActionV46:hover,.memberDashboard .quickActionV46:focus-visible{background:linear-gradient(125deg,rgba(154,94,228,.22),rgba(255,255,255,.04));border-color:rgba(202,153,255,.52);box-shadow:0 0 24px rgba(142,80,210,.12)}
+.memberDashboard .quickActionV46>div{flex:1;min-width:0}
+.memberDashboard .quickActionV46 strong{font-size:.84rem;line-height:1.3;overflow-wrap:anywhere}
+.memberDashboard .quickActionV46 small{font-size:.7rem;line-height:1.4;overflow-wrap:anywhere}
+.memberDashboard .quickActionV46 .quickArrowV46{background:none;width:auto;height:auto;align-self:flex-start;color:#bca0df;font-size:1rem}
+@media(max-width:700px){.memberDashboard .quickActionsV46{grid-template-columns:1fr}}
+/* Respect nav menu width even when member chooses 250% in the slider. */
+html[data-sos-nav-scaled] body :is(header nav a,.siteNav a,.navLinks a,.nav-links a,.navbar a){font-size:clamp(9px,calc(.80rem * var(--sos-nav-scale,1)),16px)!important;line-height:1.3!important;letter-spacing:normal!important;max-width:100%!important;min-width:0!important;box-sizing:border-box!important;white-space:normal!important;overflow-wrap:anywhere!important}
+body :is(.navLinks,.nav-links,.siteNav,.navbar){max-width:100%;min-width:0;box-sizing:border-box;flex-wrap:wrap}
+body :is(.navLinks a,.nav-links a,.siteNav a,.navbar a){flex-shrink:1;min-width:0;max-width:100%;box-sizing:border-box}
+@media(max-width:650px){html[data-sos-nav-scaled] body :is(header nav a,.siteNav a,.navLinks a,.nav-links a,.navbar a){font-size:clamp(9px,calc(.72rem * var(--sos-nav-scale,1)),14px)!important}}
