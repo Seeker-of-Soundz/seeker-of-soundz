@@ -75,7 +75,7 @@ function render(){
  const projects=document.createElement("section");projects.className="profilePanelV46 currentProjectsV46 dashboardV46";projects.innerHTML=`<div class="profilePanelHeadV46"><div><p class="sectionEyebrow">Production</p><h3>Current Projects</h3></div>${st.myProjects.length?'<a class="secondaryButton" href="collaboration.html">View all</a>':''}</div><div class="projectCardsV46">${makeProjects(st.myProjects)}</div>`;
  lower.after(projects);
  dash.querySelector('[href="#open-cart-v46"]')?.addEventListener("click",e=>{e.preventDefault();document.getElementById("cartDrawer")?.classList.add("open")});
- dash.querySelector('[href="#profileStudio"]')?.addEventListener("click",e=>{e.preventDefault();document.getElementById("profileStudio")?.scrollIntoView({behavior:"smooth",block:"start"})});
+ dash.querySelector('[href="#profileStudio"]')?.addEventListener("click",e=>{e.preventDefault();window.SOS44OpenProfile?.() || document.getElementById("profileStudio")?.scrollIntoView({behavior:"smooth",block:"start"})});
 }
 window.addEventListener("DOMContentLoaded",()=>setTimeout(render,80));
 window.addEventListener("storage",render);
