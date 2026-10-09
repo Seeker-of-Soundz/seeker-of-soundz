@@ -2,8 +2,8 @@
 (()=>{
   'use strict';
   window.__SOS_TRANSITION_V4135__=true;
-  const MODES=new Set(['stellar','fade','aperture','warp','scan','cubes','prism','shutter','pulse','vertical','minimal']);
-  const DURATIONS={stellar:360,fade:250,aperture:360,warp:390,scan:330,cubes:380,prism:460,shutter:440,pulse:460,vertical:460,minimal:0};
+  const MODES=new Set(['stellar','fade','aperture','warp','scan','cubes','prism','shutter','pulse','vertical','minimal','eclipse','aurorawipe','signalburst']);
+  const DURATIONS={stellar:360,fade:250,aperture:360,warp:390,scan:330,cubes:380,prism:460,shutter:440,pulse:460,vertical:460,eclipse:520,aurorawipe:500,signalburst:460,minimal:0};
   let busy=false;
   let navTimer=0;
 
@@ -32,6 +32,9 @@
 
   function effectMarkup(mode){
     switch(mode){
+      case 'eclipse': return '<div class="sosFx sosFxEclipse"></div>';
+      case 'aurorawipe': return '<div class="sosFx sosFxAuroraWipe"></div>';
+      case 'signalburst': return '<div class="sosFx sosFxSignalBurst"></div>';
       case 'fade': return '<div class="sosFx sosFxFade"></div>';
       case 'aperture': return '<div class="sosFx sosFxAperture"><i></i><i></i></div>';
       case 'warp': return '<div class="sosFx sosFxWarp"><i></i><i></i><i></i><i></i><i></i><i></i></div>';
