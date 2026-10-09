@@ -26,10 +26,10 @@ try{
  const speed=['slow','normal','fast'].includes(saved.loaderLogoSpeed)?saved.loaderLogoSpeed:'slow';
  const barAnimation=['fill','pulse','scanner','segments','bounce','spectrum','retro','minimal'].includes(saved.loaderBarAnimation)?saved.loaderBarAnimation:'pulse';
  const brandFont=['modern','retro','arcade','digital','mono','wide','serif'].includes(saved.loaderBrandFont)?saved.loaderBrandFont:'modern';
- const centerEffect=['none','cubes','circlewave','orbitdots','radar','equalizer','pulsehalo','sparkorbit','hexring','vinyl'].includes(saved.loaderCenterEffect)?saved.loaderCenterEffect:'cubes';
+ const centerEffect=['none','cubes','circlewave','orbitdots','radar','equalizer','pulsehalo','sparkorbit','hexring','vinyl','lasergrid','constellation','plasma','comet','triplehalo'].includes(saved.loaderCenterEffect)?saved.loaderCenterEffect:'cubes';
  ['fill','pulse','scanner','segments','bounce','spectrum','retro','minimal'].forEach(value=>root.classList.toggle(`sos-loader-bar-${value}`,value===barAnimation));
  ['modern','retro','arcade','digital','mono','wide','serif'].forEach(value=>root.classList.toggle(`sos-loader-font-${value}`,value===brandFont));
- ['none','cubes','circlewave','orbitdots','radar','equalizer','pulsehalo','sparkorbit','hexring','vinyl'].forEach(value=>root.classList.toggle(`sos-loader-center-${value}`,value===centerEffect));
+ ['none','cubes','circlewave','orbitdots','radar','equalizer','pulsehalo','sparkorbit','hexring','vinyl','lasergrid','constellation','plasma','comet','triplehalo'].forEach(value=>root.classList.toggle(`sos-loader-center-${value}`,value===centerEffect));
 
  ['pulse','spin','coin','tilt','float','glitch','none'].forEach(value=>root.classList.toggle(`sos-loader-logo-${value}`,value===logoMotion));
  ['cosmic','void','violet','blue','crimson','emerald','monochrome','aurora','grid'].forEach(value=>root.classList.toggle(`sos-loader-bg-${value}`,value===backgroundStyle));
