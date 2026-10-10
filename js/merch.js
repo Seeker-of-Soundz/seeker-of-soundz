@@ -1,15 +1,7 @@
-(()=>{
+const initMerchCloud54=()=>{
 "use strict";
-const defaults=[
-{id:"signature-tee",name:"Signature Frequency Tee",price:29,type:"Apparel",category:"T-Shirts",description:"Official Seeker Of SoundZ signature tee.",image:"",link:"",sizes:["S","M","L","XL","2XL"],colors:["Black","White","Charcoal"],stock:24},
-{id:"midnight-hoodie",name:"Midnight Seeker Hoodie",price:59,type:"Apparel",category:"Hoodies",description:"A heavyweight hoodie for late-night sessions.",image:"",link:"",sizes:["S","M","L","XL","2XL","3XL"],colors:["Black","Charcoal","White"],stock:18},
-{id:"sos-cap",name:"SOS Logo Cap",price:24,type:"Accessory",category:"Headwear",description:"Minimal logo cap built for everyday wear.",image:"",link:"",sizes:["One Size"],colors:["Black","White"],stock:14},
-{id:"creator-assets",name:"DJ & Production Assets",price:35,type:"Digital",category:"Creator Assets",description:"Useful tools for DJs and producers.",image:"",link:"",sizes:[],colors:[],stock:999}
-];
-const custom=SOS.read(SOS.K.catalog,[]).filter(x=>{
- const type=String(x.type||"").toLowerCase(),category=String(x.category||"").toLowerCase();
- return type!=="music"&&!category.includes("exclusive music")&&!category.includes("album")&&!category.includes("single")&&!category.includes("ep");
-}),products=[...custom.filter(x=>x.featured),...defaults,...custom.filter(x=>!x.featured)];
+// The public storefront and the existing Admin Merch Store share one catalog.
+const products=SOS.read(SOS.K.catalog,[]).filter(x=>{const t=String(x.type||'').toLowerCase(),c=String(x.category||'').toLowerCase();return t!=='music'&&!['exclusive music','album','single','ep'].some(v=>c.includes(v))}).sort((a,b)=>Number(!!b.featured)-Number(!!a.featured));
 const esc=v=>String(v??"").replace(/[&<>'"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
 const arr=v=>Array.isArray(v)?v:String(v||"").split(",").map(x=>x.trim()).filter(Boolean);
 const grid=document.getElementById("productGrid");
@@ -50,4 +42,5 @@ modal.addEventListener("pointerout",e=>{
 modal.addEventListener("mousemove",e=>{const box=e.target.closest(".zoomableProductImage");if(!box)return;const img=box.querySelector("img");if(!img)return;const r=box.getBoundingClientRect(),x=((e.clientX-r.left)/r.width)*100,y=((e.clientY-r.top)/r.height)*100;img.style.transformOrigin=`${x}% ${y}%`;img.classList.add("isZoomed")});
 modal.addEventListener("mouseleave",()=>{const img=modal.querySelector(".zoomableProductImage img");if(img){img.classList.remove("isZoomed");img.style.transformOrigin="center"}},true);
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))close()});
-})();
+};
+if(window.SOSMerchCloud?.ready())initMerchCloud54();else document.addEventListener("sos:merch-cloud-ready",initMerchCloud54,{once:true});
