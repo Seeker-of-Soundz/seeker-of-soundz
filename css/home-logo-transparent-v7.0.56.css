@@ -1,0 +1,6 @@
+/* Homepage logo: transparent supplied artwork, no opaque rectangle. */
+#hero .heroLogo, #hero .heroLogo .logoCubeFrame { background:none!important; background-image:none!important; box-shadow:none!important; border:0!important; outline:0!important; overflow:visible!important; }
+#hero .heroLogo img[data-sos-image-key="homepage-main-logo"] {display:block!important;width:min(440px,76vw)!important;height:auto!important;max-width:100%!important;max-height:none!important;object-fit:contain!important;aspect-ratio:1000/740!important;background:none!important;background-image:none!important;border:0!important;border-radius:0!important;box-shadow:none!important;clip-path:none!important;filter:drop-shadow(0 0 22px rgba(232,209,255,.19))!important;}
+#hero .heroLogo .logoCubeFrame {width:min(460px,78vw)!important;height:auto!important;aspect-ratio:auto!important;}
+#hero .heroLogo .logoCubeHalo{inset:-18px!important;}
+@media(max-width:600px){#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{width:min(340px,82vw)!important}}
