@@ -1,0 +1,37 @@
+/* v7.0.59: Grimey-Goons-style contained central pattern, soft outside falloff.
+   Scoped to the homepage hero; existing artwork, controls and Admin image keys untouched. */
+#hero{isolation:isolate!important;overflow:hidden!important}
+#hero .sos57Pattern{
+  position:absolute!important;
+  inset:auto!important;
+  width:min(76vw,1000px)!important;
+  height:min(85%,760px)!important;
+  top:48%!important;
+  left:50%!important;
+  transform:translate(-50%,-50%)!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  background-image:var(--sos57-pattern,url('../assets/images/sos-moving-pattern-overlay.png'))!important;
+  background-repeat:repeat!important;
+  background-size:270px 202.5px!important;
+  background-position:0 0;
+  opacity:.24!important;
+  filter:blur(2.3px)!important;
+  mask-image:radial-gradient(ellipse 50% 49% at 50% 50%,#000 0%,rgba(0,0,0,.95) 35%,rgba(0,0,0,.65) 57%,rgba(0,0,0,.22) 75%,transparent 100%)!important;
+  -webkit-mask-image:radial-gradient(ellipse 50% 49% at 50% 50%,#000 0%,rgba(0,0,0,.95) 35%,rgba(0,0,0,.65) 57%,rgba(0,0,0,.22) 75%,transparent 100%)!important;
+  animation:sos59PatternDrift 46s linear infinite!important;
+  will-change:background-position;
+}
+/* Gentle purple bloom behind the central artwork, without a box-shaped backdrop. */
+#hero .sos57Pattern::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 48% 48% at 50% 50%,rgba(89,28,143,.15),transparent 78%)!important;
+}
+#hero .heroContent{position:relative!important;z-index:3!important}
+@keyframes sos59PatternDrift{from{background-position:0 0}to{background-position:270px 202.5px}}
+@media(max-width:700px){
+ #hero .sos57Pattern{width:110vw!important;height:min(70%,570px)!important;top:46%!important;background-size:210px 157.5px!important;opacity:.18!important;animation-name:sos59PatternDriftMobile!important;animation-duration:60s!important}
+ @keyframes sos59PatternDriftMobile{from{background-position:0 0}to{background-position:210px 157.5px}}
+}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern{animation:none!important}}
+html.performance-mode #hero .sos57Pattern,html.sos-adaptive-low #hero .sos57Pattern{animation:none!important;filter:none!important;opacity:.1!important}

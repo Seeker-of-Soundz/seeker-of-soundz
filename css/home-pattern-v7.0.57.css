@@ -1,0 +1,17 @@
+/* The pattern is a translucent layer, never a rectangle over the existing halo. */
+#hero{isolation:isolate!important;overflow:hidden}
+#hero .sos57Pattern{position:absolute;inset:-14%;z-index:0;pointer-events:none;background-image:var(--sos57-pattern,url('../assets/images/sos-moving-pattern-overlay.png'));background-repeat:repeat;background-position:0 0;background-size:340px 255px;opacity:.30;filter:blur(3px);mask-image:radial-gradient(ellipse 69% 64% at 50% 43%,transparent 0%,transparent 23%,rgba(0,0,0,.36) 40%,black 60%,rgba(0,0,0,.38) 78%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 69% 64% at 50% 43%,transparent 0%,transparent 23%,rgba(0,0,0,.36) 40%,black 60%,rgba(0,0,0,.38) 78%,transparent 100%);animation:sos57Drift 44s linear infinite;will-change:background-position}
+#hero .sos57PatternSource{position:absolute!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important;left:-9999px!important;top:0!important}
+#hero .heroContent{position:relative;z-index:2}
+#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{filter:drop-shadow(0 0 13px rgba(202,134,255,.82)) drop-shadow(0 0 32px rgba(124,42,208,.58))!important;background:transparent!important;box-shadow:none!important}
+@keyframes sos57Drift{from{background-position:0 0}to{background-position:340px 255px}}
+@media(max-width:700px){#hero .sos57Pattern{opacity:.21;background-size:272px 204px;animation-name:sos57DriftMobile;animation-duration:58s}}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern{animation:none!important}}
+html.performance-mode #hero .sos57Pattern,html.sos-adaptive-low #hero .sos57Pattern{animation:none!important;filter:none!important;opacity:.12!important}
+
+/* v7.0.58: seamless tile drift, feathered outer ring, unobstructed foreground. */
+#hero .sos57Pattern{inset:-18%;z-index:0}
+#hero .sos57Pattern::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 55% 53% at 50% 43%,rgba(8,0,18,.33),transparent 62%);opacity:.8}
+#hero .heroContent{z-index:3}
+@keyframes sos57DriftMobile{from{background-position:0 0}to{background-position:272px 204px}}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern{animation:none!important}}

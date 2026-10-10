@@ -1,0 +1,54 @@
+/* v7.0.60: keep the v7.0.59 contained oval and Admin image binding.
+   Move a composited tile layer instead of repainting background-position each frame. */
+#hero .sos57Pattern{
+  background-image:none!important;
+  filter:none!important; /* blur the repeating tiles, never the foreground logo */
+  animation:none!important;
+  overflow:visible!important;
+  contain:layout style;
+}
+#hero .sos57Pattern::before{
+  content:"";
+  position:absolute;
+  inset:-270px -270px;
+  pointer-events:none;
+  background-image:var(--sos57-pattern,url('../assets/images/sos-moving-pattern-overlay.png'));
+  background-repeat:repeat;
+  background-size:270px 202.5px;
+  background-position:0 0;
+  filter:blur(1.1px);
+  transform:translate3d(0,0,0);
+  animation:sos60TileScroll 46s linear infinite;
+  will-change:transform;
+  backface-visibility:hidden;
+}
+/* The pattern's 270px by 202.5px tile is repeated at both endpoints.
+   Translating by one complete tile makes frame 0 and frame 100% identical. */
+@keyframes sos60TileScroll{
+  from{transform:translate3d(0,0,0)}
+  to{transform:translate3d(270px,202.5px,0)}
+}
+/* Keep the uploaded logo crisp, with glow around its opaque artwork only. */
+#hero .heroLogo,
+#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{
+  filter:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+}
+#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{
+  image-rendering:auto!important;
+  opacity:1!important;
+  filter:drop-shadow(0 0 7px rgba(180,92,255,.6)) drop-shadow(0 0 17px rgba(132,47,222,.45))!important;
+}
+@media(max-width:700px){
+ #hero .sos57Pattern::before{
+   inset:-210px -210px;
+   background-size:210px 157.5px;
+   animation-name:sos60TileScrollMobile;
+   animation-duration:60s;
+ }
+ @keyframes sos60TileScrollMobile{from{transform:translate3d(0,0,0)}to{transform:translate3d(210px,157.5px,0)}}
+}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern::before{animation:none!important;will-change:auto!important}}
+html.performance-mode #hero .sos57Pattern::before,
+html.sos-adaptive-low #hero .sos57Pattern::before{animation-duration:90s!important;will-change:auto!important}
