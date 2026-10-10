@@ -1,0 +1,21 @@
+/* v7.0.64: v7.0.63's !important transform blocked its keyframe motion.
+   Keep one non-repeating image and softly fade at the loop reset. */
+#hero .sos57Pattern::before{
+ background-repeat:no-repeat!important;
+ background-size:cover!important;
+ background-position:center!important;
+ /* no important static transform: keyframes control movement */
+ animation:sos64SingleImageLoop 22s linear infinite!important;
+ transform-origin:center center;
+ will-change:transform,opacity;
+}
+@keyframes sos64SingleImageLoop{
+ 0%{transform:translate3d(6%,4%,0) scale(1.16);opacity:.75}
+ 7%{opacity:1}
+ 88%{transform:translate3d(-6%,-4%,0) scale(1.16);opacity:1}
+ 95%{transform:translate3d(-6.5%,-4.5%,0) scale(1.16);opacity:.08}
+ 96%{transform:translate3d(6%,4%,0) scale(1.16);opacity:.08}
+ 100%{transform:translate3d(6%,4%,0) scale(1.16);opacity:.75}
+}
+@media(max-width:700px){#hero .sos57Pattern::before{animation-duration:42s!important}}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern::before{animation:none!important;transform:none!important;opacity:1!important;will-change:auto!important}}

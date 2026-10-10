@@ -1,0 +1,1 @@
+v7.0.65: Fix stationary background by removing !important static transform in v7.0.63, allowing v7.0.64 keyframe transform to animate. Single nonrepeating image, 22s loop, short fade at reset. Admin and Supabase unchanged.

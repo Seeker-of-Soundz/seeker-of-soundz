@@ -1,0 +1,10 @@
+/* v7.0.63: ONE image, no CSS tiling or quadrant repetition. */
+#hero .sos57Pattern{background:none!important;animation:none!important;filter:none!important;overflow:hidden!important;isolation:isolate!important;opacity:.25!important;mask-image:radial-gradient(ellipse 51% 49% at 50% 50%,#000 0%,rgba(0,0,0,.93) 38%,rgba(0,0,0,.55) 62%,transparent 100%)!important;-webkit-mask-image:radial-gradient(ellipse 51% 49% at 50% 50%,#000 0%,rgba(0,0,0,.93) 38%,rgba(0,0,0,.55) 62%,transparent 100%)!important}
+#hero .sos57Pattern::before{content:""!important;position:absolute!important;inset:-9%!important;width:118%!important;height:118%!important;background-image:var(--sos57-pattern,url('../assets/images/sos-moving-pattern-full-v7.0.63.png'))!important;background-repeat:no-repeat!important;background-size:cover!important;background-position:center center!important;opacity:1;filter:none!important;transform:translate3d(-2%,-2%,0) scale(1.04);animation:sos63OneImageDrift 36s ease-in-out infinite alternate!important;will-change:transform;backface-visibility:hidden;pointer-events:none}
+/* Alternate motion returns continuously to its starting point, without an abrupt reset.
+   Unlike background-repeat:repeat, this never creates four visible square tiles. */
+@keyframes sos63OneImageDrift{0%{transform:translate3d(-2%,-2%,0) scale(1.04)}100%{transform:translate3d(2%,2%,0) scale(1.04)}}
+#hero .sos57Pattern::after{pointer-events:none!important}
+#hero .heroContent{position:relative!important;z-index:3!important}
+@media(max-width:700px){#hero .sos57Pattern{opacity:.19!important}#hero .sos57Pattern::before{inset:-12%!important;width:124%!important;height:124%!important;animation-duration:44s!important}}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern::before{animation:none!important;transform:none!important;will-change:auto!important}}
