@@ -1,0 +1,49 @@
+/* v7.0.61: stationary oval feathering; only a flat texture moves.
+   No animated blur, backdrop-filter, background-position, or enormous pseudo layer. */
+#hero .sos57Pattern{
+  background:none!important;
+  animation:none!important;
+  filter:none!important;
+  overflow:hidden!important;
+  contain:layout paint style!important;
+  isolation:isolate!important;
+  will-change:auto!important;
+  opacity:.26!important;
+  mask-image:radial-gradient(ellipse 50% 49% at 50% 50%,#000 0%,rgba(0,0,0,.95) 35%,rgba(0,0,0,.65) 57%,rgba(0,0,0,.22) 75%,transparent 100%)!important;
+  -webkit-mask-image:radial-gradient(ellipse 50% 49% at 50% 50%,#000 0%,rgba(0,0,0,.95) 35%,rgba(0,0,0,.65) 57%,rgba(0,0,0,.22) 75%,transparent 100%)!important;
+}
+#hero .sos57Pattern::before{
+  content:"";position:absolute;inset:0 auto auto 0;
+  width:calc(100% + 270px);height:calc(100% + 203px);
+  background-image:var(--sos57-pattern,url('../assets/images/sos-moving-pattern-smooth-v7.0.61.png'));
+  background-repeat:repeat;background-size:270px 202.5px;background-position:0 0;
+  filter:none!important;opacity:1;
+  transform:translate3d(0,0,0);
+  animation:sos61Drift 64s linear infinite!important;
+  will-change:transform;
+  backface-visibility:hidden;
+  pointer-events:none;
+}
+/* Pixel-perfect tile displacement, no cross-fade or snap at the cycle boundary. */
+@keyframes sos61Drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-270px,-202.5px,0)}}
+#hero .sos57Pattern::after{pointer-events:none}
+#hero .heroContent{position:relative!important;z-index:3!important}
+#hero .heroLogo,#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{
+  filter:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{
+  filter:drop-shadow(0 0 7px rgba(180,92,255,.6)) drop-shadow(0 0 17px rgba(132,47,222,.45))!important;
+}
+@media(max-width:700px){
+ #hero .sos57Pattern{opacity:.19!important}
+ #hero .sos57Pattern::before{
+  width:calc(100% + 210px);height:calc(100% + 158px);
+  background-size:210px 157.5px;
+  animation-name:sos61DriftMobile!important;animation-duration:80s!important;
+ }
+ @keyframes sos61DriftMobile{from{transform:translate3d(0,0,0)}to{transform:translate3d(-210px,-157.5px,0)}}
+}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern::before{animation:none!important;will-change:auto!important}}
+/* Performance modes slow the movement rather than stopping it entirely. */
+html.performance-mode #hero .sos57Pattern::before,
+html.sos-adaptive-low #hero .sos57Pattern::before{animation-duration:110s!important}
