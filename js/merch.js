@@ -43,4 +43,7 @@ modal.addEventListener("mousemove",e=>{const box=e.target.closest(".zoomableProd
 modal.addEventListener("mouseleave",()=>{const img=modal.querySelector(".zoomableProductImage img");if(img){img.classList.remove("isZoomed");img.style.transformOrigin="center"}},true);
 document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))close()});
 };
-if(window.SOSMerchCloud?.ready())initMerchCloud54();else document.addEventListener("sos:merch-cloud-ready",initMerchCloud54,{once:true});
+let merchInitialized55=false;
+function startMerch55(){if(merchInitialized55)return;merchInitialized55=true;initMerchCloud54()}
+if(window.SOSMerchCloud?.ready())startMerch55();else document.addEventListener('sos:merch-cloud-ready',startMerch55,{once:true});
+setTimeout(startMerch55,3500);
