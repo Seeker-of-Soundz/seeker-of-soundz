@@ -1,0 +1,1 @@
+SOS Beat Lab v7.0.81: frequency matrix pointer drag fix. Updated XY pad pointer capture, global move handling, touch interactions, CSS hit testing, and cache-busted script. All prior website assets preserved. Browser testing still required.

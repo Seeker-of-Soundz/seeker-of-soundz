@@ -1,0 +1,4 @@
+/* v7.0.81: keep the entire XY surface interactive across pointer devices. */
+#sy-xy{position:relative;touch-action:none!important;user-select:none!important;-webkit-user-select:none!important;cursor:crosshair!important;pointer-events:auto!important;overscroll-behavior:contain}
+#sy-xy *{pointer-events:none!important;user-select:none!important;-webkit-user-select:none!important}
+#sy-dot{will-change:left,top}
