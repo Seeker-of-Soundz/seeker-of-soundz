@@ -1,0 +1,15 @@
+/* v7.0.67: restore the hidden image source removed with older CSS.
+   The source exists solely for Admin image overrides and must never occupy layout space. */
+#hero > img.sos57PatternSource {
+  position:absolute!important;left:-99999px!important;top:0!important;
+  display:block!important;width:1px!important;height:1px!important;
+  opacity:0!important;visibility:hidden!important;pointer-events:none!important;
+  max-width:none!important;min-width:0!important;object-fit:contain!important;
+}
+/* Preserve original hero content flow and center alignment. */
+#hero{position:relative!important;overflow:hidden!important;isolation:isolate!important}
+#hero .sos57Pattern{z-index:0!important;pointer-events:none!important}
+#hero .heroContent{position:relative!important;z-index:3!important;margin-left:auto!important;margin-right:auto!important}
+/* Limit the background motion to the pattern layer; do not transform the hero. */
+#hero .sos57Pattern::before{animation:sos66GrimeyMotion 22s linear infinite!important}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern::before{animation:none!important}}

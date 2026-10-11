@@ -1,0 +1,1 @@
+Producer Hub: merged tutorial area into existing resource directory, hid duplicate upper discovery panel, replaced paging with auto-loading on scroll. Preserved existing resource records. 900+ verified unique resources were not added; do not misrepresent generated duplicates as unique plugins.

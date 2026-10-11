@@ -1,0 +1,14 @@
+/* v7.0.68 — feather ONLY the outer boundary of the moving SOS pattern.
+   Preserve the v7.0.67 layout and 22-second Grimey Goons motion. */
+#hero .sos57Pattern {
+  border-radius:0!important; /* eliminate the hard circular clipping edge */
+  -webkit-mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,
+    #000 0%, #000 34%, rgba(0,0,0,.94) 44%,
+    rgba(0,0,0,.72) 55%, rgba(0,0,0,.40) 66%,
+    rgba(0,0,0,.15) 77%, rgba(0,0,0,.035) 88%, transparent 100%)!important;
+  mask-image:radial-gradient(ellipse 50% 50% at 50% 50%,
+    #000 0%, #000 34%, rgba(0,0,0,.94) 44%,
+    rgba(0,0,0,.72) 55%, rgba(0,0,0,.40) 66%,
+    rgba(0,0,0,.15) 77%, rgba(0,0,0,.035) 88%, transparent 100%)!important;
+}
+/* Do not blur the central SOS logo or alter the existing animation. */

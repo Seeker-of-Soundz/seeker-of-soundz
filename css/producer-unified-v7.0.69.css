@@ -1,0 +1,11 @@
+/* One producer directory; legacy upper discovery panel is redundant. */
+.pluginDiscoveryV720{display:none!important}
+.producerLearning721{margin:24px 0!important;max-width:100%;}
+.producerLearningHead721{padding:16px 20px!important}
+.learningGrid721{max-height:480px;overflow:auto;overscroll-behavior:contain}
+.resourceAutoLoad69{padding:22px;text-align:center;color:#c9b8e4;font-size:.88rem;letter-spacing:.03em}
+.resourceAutoLoad69::before{content:"";display:inline-block;width:12px;height:12px;border:2px solid #b98bd9;border-top-color:transparent;border-radius:50%;vertical-align:middle;margin-right:12px;animation:sos69spin .8s linear infinite}
+@keyframes sos69spin{to{transform:rotate(360deg)}}
+.resourcePager #resourcePrev,.resourcePager #resourceNext{display:none!important}
+@media(max-width:700px){.learningGrid721{max-height:360px}}
+@media(prefers-reduced-motion:reduce){.resourceAutoLoad69::before{animation:none}}

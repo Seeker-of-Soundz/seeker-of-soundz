@@ -1,0 +1,14 @@
+/* v7.0.72: larger horizontal scrollbars and mouse drag scrolling, Producer Hub only */
+#resourceCategoryStrip, .pluginQuickFilters {
+  overflow-x:auto!important; overflow-y:hidden!important;
+  scrollbar-width:auto!important; scrollbar-color:#b58cff rgba(255,255,255,.12)!important;
+  padding-bottom:19px!important; overscroll-behavior-x:contain;
+  -webkit-overflow-scrolling:touch; touch-action:pan-x pan-y;
+}
+#resourceCategoryStrip::-webkit-scrollbar, .pluginQuickFilters::-webkit-scrollbar {height:17px!important}
+#resourceCategoryStrip::-webkit-scrollbar-track, .pluginQuickFilters::-webkit-scrollbar-track {background:rgba(255,255,255,.12);border-radius:20px}
+#resourceCategoryStrip::-webkit-scrollbar-thumb, .pluginQuickFilters::-webkit-scrollbar-thumb {background:#a77bea;border:3px solid rgba(30,18,46,.85);border-radius:20px;min-width:40px}
+#resourceCategoryStrip::-webkit-scrollbar-thumb:hover, .pluginQuickFilters::-webkit-scrollbar-thumb:hover {background:#c8a9ff}
+#resourceCategoryStrip.sos72-drag-ready, .pluginQuickFilters.sos72-drag-ready {cursor:grab}
+#resourceCategoryStrip.sos72-dragging, .pluginQuickFilters.sos72-dragging {cursor:grabbing;user-select:none;-webkit-user-select:none;scroll-behavior:auto!important}
+#resourceCategoryStrip.sos72-dragging *, .pluginQuickFilters.sos72-dragging * {cursor:grabbing!important;user-select:none!important}

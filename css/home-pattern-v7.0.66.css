@@ -1,0 +1,77 @@
+/* Seeker Of Soundz v7.0.66
+   Port of the ACTUAL Grimey Goons v4.2 .hero-pattern-loop motion:
+   @keyframes ggPatternLoop: 0% (-5%,-4%) rotate(-1deg) scale(1.08),
+   50% (7%,5%) rotate(1deg) scale(1.13), 100% same as 0%; 22s linear.
+   Keep SOS's single full-sized image (no repeated CSS tiles), Admin image key,
+   foreground logo, existing stars and other hero animation untouched. */
+#hero{isolation:isolate;overflow:hidden}
+#hero .sos57Pattern{
+  position:absolute!important;
+  inset:auto!important;
+  left:50%!important;
+  top:48%!important;
+  width:min(76vw,1000px)!important;
+  height:min(85%,760px)!important;
+  transform:translate(-50%,-50%)!important;
+  z-index:0!important;
+  pointer-events:none!important;
+  overflow:hidden!important;
+  isolation:isolate!important;
+  opacity:.34!important;
+  background:none!important;
+  filter:none!important;
+  animation:none!important;
+  will-change:auto!important;
+  border-radius:50%;
+  mask-image:radial-gradient(ellipse at center,#000 0 43%,rgba(0,0,0,.72) 58%,transparent 76%)!important;
+  -webkit-mask-image:radial-gradient(ellipse at center,#000 0 43%,rgba(0,0,0,.72) 58%,transparent 76%)!important;
+}
+#hero .sos57Pattern::before{
+  content:""!important;
+  position:absolute!important;
+  inset:-30%!important;
+  width:auto!important;
+  height:auto!important;
+  display:block!important;
+  background-image:var(--sos57-pattern,url('../assets/images/sos-moving-pattern-full-v7.0.63.png'))!important;
+  background-repeat:no-repeat!important;
+  background-size:100% 100%!important;
+  background-position:center!important;
+  opacity:.76!important;
+  filter:none!important;
+  mix-blend-mode:screen;
+  backface-visibility:hidden;
+  transform-origin:center center;
+  animation:sos66GrimeyMotion 22s linear infinite!important;
+  will-change:transform;
+  pointer-events:none!important;
+}
+/* Grimey Goons v4.2's exact 22s motion timing and transform stops.
+   Frame 100 equals frame 0, so the loop never jumps. */
+@keyframes sos66GrimeyMotion{
+  0%{transform:translate3d(-5%,-4%,0) rotate(-1deg) scale(1.08)}
+  50%{transform:translate3d(7%,5%,0) rotate(1deg) scale(1.13)}
+  100%{transform:translate3d(-5%,-4%,0) rotate(-1deg) scale(1.08)}
+}
+#hero .sos57Pattern::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(94,34,157,.12),transparent 72%);
+}
+#hero .heroContent{position:relative!important;z-index:3!important}
+#hero .heroLogo,#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{
+  backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+}
+#hero .heroLogo img[data-sos-image-key="homepage-main-logo"]{
+  background:transparent!important;
+  box-shadow:none!important;
+  filter:drop-shadow(0 0 7px rgba(180,92,255,.6)) drop-shadow(0 0 17px rgba(132,47,222,.45))!important;
+}
+@media(max-width:850px){#hero .sos57Pattern{width:115vw!important;height:85vw!important;opacity:.24!important}}
+@media(max-width:480px){#hero .sos57Pattern{width:145vw!important;height:110vw!important;top:43%!important;opacity:.20!important}}
+@media(prefers-reduced-motion:reduce){#hero .sos57Pattern::before{animation:none!important;will-change:auto!important}}
+/* The performance toggle may reduce decorative effects, but should not silently stop the pattern. */
+html.performance-mode #hero .sos57Pattern::before,
+html.sos-adaptive-low #hero .sos57Pattern::before{animation:sos66GrimeyMotion 22s linear infinite!important}

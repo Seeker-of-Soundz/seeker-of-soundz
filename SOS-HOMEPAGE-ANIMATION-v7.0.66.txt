@@ -1,0 +1,4 @@
+Homepage animation: uses the 22-second motion keyframes from the supplied Grimey Goons v4.2 reference.
+The homepage now loads only css/home-pattern-v7.0.66.css for the pattern.
+Existing image override key homepage-moving-pattern and its JS remain unchanged.
+One full non-repeating background image moves inside a feathered oval.
