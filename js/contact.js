@@ -3,8 +3,10 @@
 const form=document.getElementById('contactForm');if(!form)return;
 const requested=new URLSearchParams(location.search).get('type');
 if(requested&&form.elements.type){form.elements.type.value=requested;if(requested==='Collaboration'){form.elements.subject.value=form.elements.subject.value||'Collaboration Studio access request';form.elements.wantsCollaboration.checked=true}}
+form.elements.type?.addEventListener('change',e=>{if(e.target.value==='Bug Report')document.getElementById('contactStatus').textContent='Your bug report will open in the dedicated reporting form.'});
 form.addEventListener('submit',async event=>{
  event.preventDefault();
+ if(form.elements.type?.value==='Bug Report'){const q=new URLSearchParams({subject:form.elements.subject.value,description:form.elements.message.value});location.href='bug-report.html?'+q.toString();return}
  const status=document.getElementById('contactStatus'),button=form.querySelector('[type="submit"]'),fields=new FormData(form);
  button.disabled=true;button.textContent='Sending…';
  const payload={p_name:String(fields.get('name')||'').trim(),p_email:String(fields.get('email')||'').trim(),p_type:String(fields.get('type')||'General'),p_subject:String(fields.get('subject')||'').trim(),p_message:String(fields.get('message')||'').trim(),p_wants_collaboration:fields.has('wantsCollaboration')};

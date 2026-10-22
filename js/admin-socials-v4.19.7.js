@@ -16,6 +16,7 @@ async function load(){
  const {data,error}=await client.rpc('admin_get_site_social_links');
  if(error)throw error;
  rows=Array.isArray(data)?data:[];
+ if(!rows.length){const fallback=await client.from('site_social_links').select('*').order('sort_order');if(!fallback.error&&fallback.data?.length)rows=fallback.data.map(x=>({key:x.platform_key,name:x.platform_name,category:x.category_label,description:x.description,icon:x.icon,url:x.profile_url,sort_order:x.sort_order,featured:x.is_featured,visible:x.is_visible}));}
 }
 function formMarkup(item={}){
  return `<form class="appForm adminEditor socialsAdminFormV4197" id="socialsAdminFormV4197">
@@ -47,12 +48,13 @@ function listMarkup(){
   <div class="adminList">${rows.length?rows.map(row=>`<article class="adminListItem socialAdminItemV4197">
    <span class="socialAdminIconV4197">${esc(row.icon||'↗')}</span>
    <div><strong>${esc(row.name)}</strong><p>${esc(row.category)} · ${esc(row.url||'No URL entered')}</p><small>${row.visible?'Public':'Hidden'}${row.featured?' · Featured':''} · Position ${Number(row.sort_order||0)}</small></div>
-   <div class="adminItemActions"><button class="smallAction" data-social-edit="${esc(row.key)}">Edit</button><button class="smallAction dangerAction" data-social-delete="${esc(row.key)}">Delete</button></div>
+   <div class="adminItemActions"><button class="smallAction" data-social-toggle="${esc(row.key)}">${row.visible?'Hide':'Show'}</button><button class="smallAction" data-social-edit="${esc(row.key)}">Edit</button><button class="smallAction dangerAction" data-social-delete="${esc(row.key)}">Delete</button></div>
   </article>`).join(''):'<div class="emptyState">No social links are stored yet.</div>'}</div>
  </section>`;
 }
+async function showHistory(){const target=$('#socialHistoryV7086');if(!target)return;target.textContent='Loading history…';const {data,error}=await client.rpc('admin_social_link_history');if(error){target.textContent='History unavailable: '+error.message+' — install the v7.0.86 SQL patch.';return}const entries=Array.isArray(data)?data:[];target.innerHTML=entries.length?entries.map(x=>`<article class="adminListItem"><div><strong>${esc(x.platform_key)} · ${esc(x.action)}</strong><p>${esc(x.changed_at)} · ${esc(x.previous?.profile_url||x.current?.profile_url||'')}</p></div><button class="smallAction" type="button" data-social-restore="${Number(x.id)}">Restore this version</button></article>`).join(''):'<p>No history recorded yet. Existing rows are backed up when the SQL migration runs.</p>'}
 function render(item={}){
- panel.innerHTML=`<div class="socialsAdminHeroV4197"><div><p class="sectionEyebrow">Social Presence Studio</p><h2>Socials Manager</h2><p>Edit the official links, labels, descriptions, visibility and order used by the public Socials page.</p></div><a class="secondaryButton" href="socials.html" target="_blank" rel="noopener">Preview Socials Page ↗</a></div>${formMarkup(item)}${listMarkup()}`;
+ panel.innerHTML=`<div class="socialsAdminHeroV4197"><div><p class="sectionEyebrow">Social Presence Studio</p><h2>Socials Manager</h2><p>Edit the official links, labels, descriptions, visibility and order used by the public Socials page.</p></div><a class="secondaryButton" href="socials.html" target="_blank" rel="noopener">Preview Socials Page ↗</a></div>${formMarkup(item)}${listMarkup()}<section class="socialsAdminListV4197"><div class="adminSectionHead"><div><p class="sectionEyebrow">Audit & Recovery</p><h3>Social link history</h3></div><button type="button" class="smallAction" data-social-history>Refresh history</button></div><div id="socialHistoryV7086">Click Refresh history to view backups and changes.</div></section>`;
 }
 async function open(){
  editingKey='';
@@ -88,7 +90,7 @@ panel.addEventListener('submit',async event=>{
   if(!saved?.platform_key)throw Error('The server did not confirm the saved social link.');
   await load();
   const confirmed=rows.find(row=>row.key===saved.platform_key);
-  if(!confirmed)throw Error('The saved link could not be read back. Check Supabase permissions.');
+  if(!confirmed||confirmed.url!==String(fd.get('url')||'').trim()||confirmed.visible!==fd.has('visible'))throw Error('Save verification failed: the stored URL or visibility did not match. Check your Supabase project and policies.');
   render();
   try{const ch=new BroadcastChannel('sos-social-links');ch.postMessage({type:'updated'});ch.close()}catch(_){}
   try{localStorage.setItem('sos-social-links-updated',String(Date.now()))}catch(_){}
@@ -97,7 +99,10 @@ panel.addEventListener('submit',async event=>{
  finally{if(button?.isConnected)button.disabled=false}
 });
 panel.addEventListener('click',async event=>{
- let button=event.target.closest('[data-social-edit]');
+ let button=event.target.closest('[data-social-history]');if(button){await showHistory();return}
+ button=event.target.closest('[data-social-restore]');if(button){if(!confirm('Restore this saved social link version?'))return;const {error}=await client.rpc('admin_restore_site_social_link',{p_history_id:Number(button.dataset.socialRestore)});if(error)return toast(error.message,'Restore failed');await load();render();await showHistory();localStorage.setItem('sos-social-links-updated',String(Date.now()));return}
+ button=event.target.closest('[data-social-toggle]');if(button){const row=rows.find(x=>x.key===button.dataset.socialToggle);if(!row)return;const {error}=await client.rpc('admin_save_site_social_link',{p_platform_key:row.key,p_platform_name:row.name,p_category_label:row.category,p_description:row.description,p_icon:row.icon,p_profile_url:row.url,p_sort_order:row.sort_order,p_is_featured:row.featured,p_is_visible:!row.visible});if(error)return toast(error.message,'Visibility update failed');await load();render();localStorage.setItem('sos-social-links-updated',String(Date.now()));return}
+ button=event.target.closest('[data-social-edit]');
  if(button){editingKey=button.dataset.socialEdit;const item=rows.find(row=>row.key===editingKey);if(item){render(item);panel.scrollIntoView({block:'start'});}return}
  button=event.target.closest('[data-social-reset]');
  if(button){editingKey='';render();return}

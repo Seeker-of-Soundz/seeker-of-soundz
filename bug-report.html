@@ -330,5 +330,5 @@
 
 <script defer src="js/member-nav-motion-v7.0.51.js?v=7.0.51"></script>
 <script src="js/bug-reports-v7.0.62.js?v=7.0.62" defer></script>
-</body>
+<script>document.addEventListener('DOMContentLoaded',()=>{const q=new URLSearchParams(location.search),f=document.getElementById('bug62Form');if(!f)return;if(q.has('subject'))f.elements.subject.value=q.get('subject').slice(0,160);if(q.has('description'))f.elements.description.value=q.get('description').slice(0,5000);});</script></body>
 </html>
