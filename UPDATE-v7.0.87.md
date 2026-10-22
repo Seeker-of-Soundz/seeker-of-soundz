@@ -1,0 +1,1 @@
+Forum polish: removed redundant sidebar Community Presence (top member panel retained); placed progression inside sidebar to prevent unintended grid rows; refreshed compact rank badge and overflow handling; aligned composer with sidebar; mobile layout refinements. Existing backend and post publishing retained. Browser verification still required.

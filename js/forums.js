@@ -121,6 +121,8 @@ function drawCats(){const box=$('#forumCategories');if(!box)return;const icons={
 function drawTags(){const counts={};state.topics.forEach(t=>(t.tags||[]).forEach(tag=>counts[tag]=(counts[tag]||0)+1));const tags=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,24);const cloud=$('#forumTagCloud');if(cloud)cloud.innerHTML=tags.map(([tag,n])=>`<button type="button" data-tag="${esc(tag)}" class="${state.tag===tag?'active':''}">#${esc(tag)} <small>${n}</small></button>`).join('')||'<span class="postMeta">Tags appear as discussions are published.</span>';const row=$('#activeTagRow');if(row)row.innerHTML=state.tag?`<span>Filtering by <b>#${esc(state.tag)}</b></span><button type="button" class="smallAction" data-clear-tag>Clear tag</button>`:''}
 function ensureMemberPanel(){
  const sidebar=$('.forumSidebar');if(!sidebar||$('#forumMemberDirectory'))return;
+ // v7.0.87: presence is already displayed in the main Community Presence panel.
+ return;
  const panel=document.createElement('section');panel.id='forumMemberDirectory';panel.className='forumMemberDirectory';
  panel.innerHTML='<div class="forumMemberDirectoryHead"><div><p class="sectionEyebrow">Community presence</p><h3>Members</h3></div><span id="forumOnlineCount">0 online</span></div><div id="forumMemberDirectoryList"></div>';
  sidebar.appendChild(panel);
