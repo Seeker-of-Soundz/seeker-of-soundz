@@ -1,0 +1,8 @@
+.socialIconPickerV7088{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:12px;border:1px solid rgba(170,116,212,.24);border-radius:14px;margin:12px 0;}
+.socialIconChoiceV7088{display:grid;place-items:center;width:38px;height:38px;border:1px solid rgba(190,148,235,.3);background:rgba(79,39,117,.28);color:white;border-radius:10px;cursor:pointer;font-size:1.2rem;}
+.socialIconChoiceV7088:hover,.socialIconChoiceV7088:focus-visible{outline:2px solid #b779ff;background:rgba(145,73,201,.4)}
+.socialIconPreviewV7088{display:grid;place-items:center;margin-left:auto;width:52px;height:52px;overflow:hidden;border:1px solid #9651c2;border-radius:12px;font-size:1.7rem;}
+.socialAdminIconV4197{display:grid;place-items:center;width:48px;height:48px;min-width:48px;overflow:hidden;}
+.socialHelpV7088{display:block;font-size:.76rem;opacity:.75;margin:4px 0 8px;line-height:1.4}
+.socialsAdminFormV4197 input,.socialsAdminFormV4197 textarea{max-width:100%;min-width:0}
+@media(max-width:640px){.socialsAdminFormV4197 .formRow{display:grid;grid-template-columns:minmax(0,1fr)}.socialIconPreviewV7088{margin-left:0}}

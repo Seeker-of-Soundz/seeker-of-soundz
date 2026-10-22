@@ -8,6 +8,9 @@ if(!client||!panel||!menu)return;
 const $=(s,r=document)=>r.querySelector(s);
 const esc=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 let rows=[],editingKey='';
+const iconOptions=['↗','▶','🎵','🎧','🎤','🎹','🎶','📺','📷','🎬','🎮','💬','🌐','🔗','✨','📡','🎙️','💜','📱','☁️'];
+const iconIsImage=value=>{try{const u=new URL(String(value||''));return u.protocol==='https:'&&/\.(png|jpe?g|webp|gif|svg)(?:$|[?#])/i.test(u.pathname+u.search)}catch{return false}};
+const iconHTML=value=>iconIsImage(value)?`<img class="sosSocialCustomIcon" src="${esc(value)}" alt="" loading="lazy" referrerpolicy="no-referrer">`:`<span aria-hidden="true">${esc(value||'↗')}</span>`;
 
 function toast(message,title='Socials Manager'){
  window.SOS?.toast?.(message,{title,icon:'✓'});
@@ -27,8 +30,9 @@ function formMarkup(item={}){
   </div>
   <div class="formRow">
    <label>Category label<input name="category" value="${esc(item.category||'Connect')}" placeholder="Videos"></label>
-   <label>Icon or symbol<input name="icon" maxlength="8" value="${esc(item.icon||'↗')}" placeholder="▶"></label>
+   <label>Custom icon <span class="socialHelpV7088">Choose below or paste a HTTPS PNG, JPG, WebP, GIF or SVG image URL</span><input name="icon" maxlength="512" value="${esc(item.icon||'↗')}" placeholder="🎵 or https://example.com/icon.png"></label>
   </div>
+  <div class="socialIconPickerV7088" aria-label="Social icon presets">${iconOptions.map(symbol=>`<button type="button" class="socialIconChoiceV7088" data-social-icon="${esc(symbol)}" title="Use ${esc(symbol)}">${esc(symbol)}</button>`).join('')}<span class="socialIconPreviewV7088" id="socialIconPreviewV7088">${iconHTML(item.icon||'↗')}</span></div>
   <label>Profile URL<input name="url" type="url" value="${esc(item.url||'')}" placeholder="https://..."></label>
   <label>Description<textarea name="description" maxlength="300" placeholder="Describe what visitors will find here.">${esc(item.description||'')}</textarea></label>
   <div class="formRow">
@@ -46,7 +50,7 @@ function listMarkup(){
  return `<section class="socialsAdminListV4197">
   <div class="adminSectionHead"><div><p class="sectionEyebrow">Published Destinations</p><h3>Socials page order</h3></div><span class="statusPill">${rows.length} links</span></div>
   <div class="adminList">${rows.length?rows.map(row=>`<article class="adminListItem socialAdminItemV4197">
-   <span class="socialAdminIconV4197">${esc(row.icon||'↗')}</span>
+   <span class="socialAdminIconV4197">${iconHTML(row.icon)}</span>
    <div><strong>${esc(row.name)}</strong><p>${esc(row.category)} · ${esc(row.url||'No URL entered')}</p><small>${row.visible?'Public':'Hidden'}${row.featured?' · Featured':''} · Position ${Number(row.sort_order||0)}</small></div>
    <div class="adminItemActions"><button class="smallAction" data-social-toggle="${esc(row.key)}">${row.visible?'Hide':'Show'}</button><button class="smallAction" data-social-edit="${esc(row.key)}">Edit</button><button class="smallAction dangerAction" data-social-delete="${esc(row.key)}">Delete</button></div>
   </article>`).join(''):'<div class="emptyState">No social links are stored yet.</div>'}</div>
@@ -98,7 +102,9 @@ panel.addEventListener('submit',async event=>{
  }catch(error){message.textContent=error.message;message.dataset.state='error'}
  finally{if(button?.isConnected)button.disabled=false}
 });
+panel.addEventListener('input',event=>{if(event.target.name==='icon'){const preview=$('#socialIconPreviewV7088');if(preview)preview.innerHTML=iconHTML(event.target.value)}});
 panel.addEventListener('click',async event=>{
+ let iconButton=event.target.closest('[data-social-icon]');if(iconButton){const field=$('#socialsAdminFormV4197 [name="icon"]');if(field){field.value=iconButton.dataset.socialIcon;field.dispatchEvent(new Event('input',{bubbles:true}))}return}
  let button=event.target.closest('[data-social-history]');if(button){await showHistory();return}
  button=event.target.closest('[data-social-restore]');if(button){if(!confirm('Restore this saved social link version?'))return;const {error}=await client.rpc('admin_restore_site_social_link',{p_history_id:Number(button.dataset.socialRestore)});if(error)return toast(error.message,'Restore failed');await load();render();await showHistory();localStorage.setItem('sos-social-links-updated',String(Date.now()));return}
  button=event.target.closest('[data-social-toggle]');if(button){const row=rows.find(x=>x.key===button.dataset.socialToggle);if(!row)return;const {error}=await client.rpc('admin_save_site_social_link',{p_platform_key:row.key,p_platform_name:row.name,p_category_label:row.category,p_description:row.description,p_icon:row.icon,p_profile_url:row.url,p_sort_order:row.sort_order,p_is_featured:row.featured,p_is_visible:!row.visible});if(error)return toast(error.message,'Visibility update failed');await load();render();localStorage.setItem('sos-social-links-updated',String(Date.now()));return}
