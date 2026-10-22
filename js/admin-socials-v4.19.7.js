@@ -37,7 +37,7 @@ function formMarkup(item={}){
     <label class="checkLine"><input name="visible" type="checkbox" ${item.visible!==false?'checked':''}> Visible publicly</label>
    </div>
   </div>
-  <button class="primaryButton">${item.key?'Save Social Changes':'Publish Social Link'}</button>
+  <button class="primaryButton" type="submit">${item.key?'Save Social Changes':'Publish Social Link'}</button>
   <p class="formMessage" id="socialsAdminMessageV4197"></p>
  </form>`;
 }
@@ -70,10 +70,10 @@ menu.addEventListener('click',event=>{
 panel.addEventListener('submit',async event=>{
  const form=event.target.closest('#socialsAdminFormV4197');if(!form)return;
  event.preventDefault();
- const button=form.querySelector('button[type="submit"]'),message=$('#socialsAdminMessageV4197',form),fd=new FormData(form);
+ const button=form.querySelector('button[type="submit"]')||form.querySelector('.primaryButton'),message=$('#socialsAdminMessageV4197',form),fd=new FormData(form);
  button.disabled=true;message.textContent='Publishing to Supabase…';
  try{
-  const {error}=await client.rpc('admin_save_site_social_link',{
+  const {data:saved,error}=await client.rpc('admin_save_site_social_link',{
    p_platform_key:String(fd.get('key')||'').trim(),
    p_platform_name:String(fd.get('name')||'').trim(),
    p_category_label:String(fd.get('category')||'Connect').trim(),
@@ -85,9 +85,16 @@ panel.addEventListener('submit',async event=>{
    p_is_visible:fd.has('visible')
   });
   if(error)throw error;
-  await load();render();toast('The Socials page was updated immediately.');
+  if(!saved?.platform_key)throw Error('The server did not confirm the saved social link.');
+  await load();
+  const confirmed=rows.find(row=>row.key===saved.platform_key);
+  if(!confirmed)throw Error('The saved link could not be read back. Check Supabase permissions.');
+  render();
+  try{const ch=new BroadcastChannel('sos-social-links');ch.postMessage({type:'updated'});ch.close()}catch(_){}
+  try{localStorage.setItem('sos-social-links-updated',String(Date.now()))}catch(_){}
+  toast('Saved and verified in Supabase. The public Socials page will refresh.');
  }catch(error){message.textContent=error.message;message.dataset.state='error'}
- finally{button.disabled=false}
+ finally{if(button?.isConnected)button.disabled=false}
 });
 panel.addEventListener('click',async event=>{
  let button=event.target.closest('[data-social-edit]');

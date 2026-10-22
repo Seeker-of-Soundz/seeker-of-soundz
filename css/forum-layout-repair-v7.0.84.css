@@ -1,0 +1,8 @@
+/* SOS 7.0.84 — restore independent forum sidebar and discussion column */
+.forumGrid{display:grid!important;grid-template-columns:minmax(220px,270px) minmax(0,1fr)!important;align-items:start!important;gap:clamp(16px,2.5vw,32px)!important;width:100%!important;min-width:0!important}
+.forumGrid>.forumSidebar{grid-column:1!important;min-width:0!important;width:100%!important}
+.forumGrid>div:not(.forumSidebar){grid-column:2!important;min-width:0!important;width:100%!important}
+#forumComposer{width:100%!important;max-width:100%!important;box-sizing:border-box!important;min-width:0!important;margin:0 0 24px!important}
+#forumComposer .appForm,#forumComposer .formRow,#forumComposer .attachmentGrid{min-width:0!important;max-width:100%!important}
+#forumComposer input,#forumComposer select,#forumComposer textarea{max-width:100%!important;box-sizing:border-box!important}
+@media(max-width:900px){.forumGrid{grid-template-columns:minmax(0,1fr)!important}.forumGrid>.forumSidebar,.forumGrid>div:not(.forumSidebar){grid-column:1!important}}
