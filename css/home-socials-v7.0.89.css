@@ -1,0 +1,15 @@
+
+#socialPreview .socialGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+#socialPreview .socialCard{min-width:0;overflow:hidden;display:flex;flex-direction:column;gap:14px;text-decoration:none}
+#socialPreview .socialCardTop{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px}
+#socialPreview .socialIcon{display:grid;place-items:center;flex:0 0 46px;width:46px;height:46px;line-height:1;overflow:hidden}
+#socialPreview .sosHomeIconImage{display:block;max-width:100%;max-height:100%;object-fit:contain}
+#socialPreview .socialCardContent{min-width:0;display:flex;flex-direction:column;gap:8px}
+#socialPreview .socialCardContent p,#socialPreview .socialCardContent h3,#socialPreview .socialCardContent span{position:static;margin:0;max-width:100%;overflow-wrap:anywhere;word-break:normal}
+#socialPreview .socialCardContent h3{font-size:clamp(1.2rem,2vw,1.8rem);line-height:1.15}
+#socialPreview .socialCardContent p{font-size:.75rem;letter-spacing:.14em}
+#socialPreview .socialCardContent span{font-size:.88rem;line-height:1.5}
+#socialPreview .sosHomeSocialStatus{grid-column:1/-1;padding:20px;border:1px solid #61477a;border-radius:16px}
+#socialPreview .sosHomeLinkMissing{opacity:.65}
+@media(max-width:900px){#socialPreview .socialGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:580px){#socialPreview .socialGrid{grid-template-columns:minmax(0,1fr);gap:12px}#socialPreview .socialCard{padding:18px}}
